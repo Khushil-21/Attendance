@@ -2,39 +2,38 @@ import React, { useState } from "react";
 import { Navbar } from "../Components/Navbar";
 import { Background } from "../Components/Background";
 import { Footer } from "../Components/Footer";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export const Teacher = () => {
 	const [Data, setData] = useState({});
-    const [nameerror, setNameerror] = useState("");
-    const [passworderror, setPassworderror] = useState("");
-    const navigate = useNavigate()
+	const [error, setError] = useState("");
+	const navigate = useNavigate();
+	const ChangeHandler = (e) => {
+		setData({ ...Data, [e.target.name]: e.target.value });
+	};
 	const Submit = async (e) => {
-        e.preventDefault();
-        const {name,password}=Data
-        const res = await fetch("http://localhost:5001/TeacherAuthentication", {
-            method: "POST",
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({name,password})
-        })
-        const json = await res.json()
-        console.log(json.nameerror)
-        console.log(json.passworderror)
-        if (json.nameerror === "" && json.passworderror === "") {
-            
-            navigate("/TeacherDashboard")
-        }
-        else {
-            setNameerror(json.nameerror)
-            setPassworderror(json.passworderror)
-        }
+		e.preventDefault();
+		const { username, password } = Data;
+		const res = await fetch("http://localhost:5001/UserAuthentication", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ username, password, role: "TEACHER" }),
+		});
+		const json = await res.json();
+		console.log(json.AuthenticationStatus);
+
+		if (json.AuthenticationStatus === "Successful") {
+			navigate("/TeacherDashboard");
+		} else {
+			setError("Invalid Credentials");
+		}
 	};
 	return (
-        <div>
-            <Navbar />
-            <Background/>
+		<div>
+			<Navbar />
+			<Background />
 			<div className="container-fluid section-2">
 				<div className="form-container">
 					<h1 className="form-heading">
@@ -42,30 +41,27 @@ export const Teacher = () => {
 						<span className="letter-1">L</span>og-
 						<span className="letter-1">I</span>n
 					</h1>
-					<form className="form" method="post" onSubmit={Submit} >
+					<form className="form" method="post" onSubmit={Submit}>
 						<input
 							className="form-input"
 							type="text"
 							placeholder="Teacher Short Name"
-							onChange={(e) => {
-								setData({...Data,"name":e.target.value});
-							}}
+							name="username"
+							onChange={ChangeHandler}
 						/>
-						<span className="red">{nameerror}</span>
 						<input
 							className="form-input"
 							type="password"
 							placeholder="Teacher password"
-							onChange={(e) => {
-								setData({...Data,"password":e.target.value});
-							}}
+							name="password"
+							onChange={ChangeHandler}
 						/>
-						<span className="red">{passworderror}</span>
+						<p className="red">{error}</p>
 						<input type="submit" className="submit-btn" defaultValue="Submit" />
 					</form>
 				</div>
-            </div>
-            <Footer/>
+			</div>
+			<Footer />
 		</div>
 	);
 };

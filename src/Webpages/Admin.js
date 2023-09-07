@@ -2,34 +2,37 @@ import React, { useState } from "react";
 import { Navbar } from "../Components/Navbar";
 import { Background } from "../Components/Background";
 import { Footer } from "../Components/Footer";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export const Admin = () => {
-    const [Data, setData] = useState({});
-    const [nameerror, setNameerror] = useState("");
-    const [passworderror, setPassworderror] = useState("");
-    const navigate = useNavigate()
+	const [Data, setData] = useState({});
+	const [error, setError] = useState("");
+
+	const navigate = useNavigate();
+
+	const ChangeHandler = (e) => {
+		setData({ ...Data, [e.target.name]: e.target.value });
+	};
+
 	const Submit = async (e) => {
-        e.preventDefault();
-        const {name,password}=Data
-        const res = await fetch("http://localhost:5001/AdminAuthentication", {
-            method: "POST",
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({name,password})
-        })
-        const json = await res.json()
-        console.log(json.nameerror)
-        console.log(json.passworderror)
-        if (json.nameerror === "" && json.passworderror === "") {
-            
-            navigate("/AdminDashboard")
-        }
-        else {
-            setNameerror(json.nameerror)
-            setPassworderror(json.passworderror)
-        }
+		e.preventDefault();
+		const { username, password } = Data;
+		const res = await fetch("http://localhost:5001/UserAuthentication", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ username, password, role: "ADMIN" }),
+		});
+		const json = await res.json();
+		console.log(json.AuthenticationStatus);
+
+		if (json.AuthenticationStatus === "Successful") {
+			navigate("/AdminDashboard");
+		}
+		else {
+			setError("Invalid Credentials")
+		}
 	};
 	return (
 		<div>
@@ -47,26 +50,20 @@ export const Admin = () => {
 							className="form-input"
 							type="text"
 							placeholder="Admin Name"
-							onChange={(e) => {
-								console.log(e.target.name)
-								console.log(e.target.value)
-							}}
-                        />
-                        <span className="red">{ nameerror}</span>
+							name="username"
+							onChange={ChangeHandler}
+						/>
 						<input
 							className="form-input"
 							type="password"
+							name="password"
 							placeholder="Admin password"
-							onChange={(e) => {
-								setData({...Data,"password":e.target.value});
-							}}
-                        />
-                        <p className="red">{passworderror}</p>
-
+							onChange={ChangeHandler}
+						/>
+						<p className="red">{error}</p>
 						<input type="submit" className="submit-btn" value={"Submit"} />
 					</form>
-
-					{/* <button className="submit-btn">Submit</button> */}
+					{/* {JSON.stringify(Data)} */}
 				</div>
 			</div>
 			<Footer />
