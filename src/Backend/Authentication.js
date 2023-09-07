@@ -1,41 +1,25 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const UserAuthentication = require("../Database/DatabaseConnection");
 app.use(express.json());
 app.use(cors());
+const port = 5001
 
-const RoleCredentials = [
-	{
-		usesername: "Admin",
-		password: "123",
-		role: "ADMIN",
-	},
-	{
-		usesername: "Teacher",
-		password: "321",
-		role: "TEACHER",
-	},
-];
 
-app.post("/UserAuthentication", (req, res) => {
+app.post("/UserAuthentication", async(req, res) => {
 	// console.log(req.body.username);
 	// console.log(req.body.password);
 	// console.log(req.body.role);
 	let AuthenticationStatus = "";
-	for (var user of RoleCredentials) {
-		console.log(user.usesername + user.password + user.role);
-		if (
-			req.body.username === user.usesername &&
-			req.body.password === user.password &&
-			req.body.role === user.role
-		) {
-			AuthenticationStatus = "Successful";
-			break;
-		} else {
-			AuthenticationStatus = "Error";
-		}
+	const Credentials = await UserAuthentication(req.body.username, req.body.password, req.body.role)
+	if (Credentials.length === 0) {
+		AuthenticationStatus = "Error";
+		
+	} else {
+		AuthenticationStatus = "Successful";
 	}
-	console.log(AuthenticationStatus);
+	// console.log(AuthenticationStatus);
 	res.json({ AuthenticationStatus });
 });
 
@@ -52,6 +36,6 @@ app.post("/GetStudentDetails", (req, res) => {
 	res.json({ student: students.slice(start, end) });
 });
 
-app.listen(5001, () => {
-	console.log("Server Started -- ");
+app.listen(port, () => {
+	console.log(`-------------- Server Started on port : ${port} --------------\n\n`);
 });
