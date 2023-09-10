@@ -1,4 +1,7 @@
 import React from "react";
+import CalculatorIcon from "../Icons/CalculatorIcon";
+import HomeIcon from "../Icons/HomeIcon";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
@@ -8,10 +11,10 @@ export const Navbar = () => {
 				data-bs-theme="dark"
 			>
 				<div className="container-fluid ">
-					<a className="navbar-brand" href="/">
+					<Link className="navbar-brand" to="/">
 						Attendance
-						<i className="fa-solid fa-calculator" />
-					</a>
+						<CalculatorIcon/>
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -29,15 +32,12 @@ export const Navbar = () => {
 							style={{ "--bs-scroll-height": "100px" }}
 						>
 							<li className="nav-item">
-								<a className="nav-link active" aria-current="page" href="/">
+								<Link className="nav-link active" aria-current="page" to="/">
+									<HomeIcon/>
 									Home
-								</a>
+								</Link>
 							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="/">
-									Link
-								</a>
-							</li>
+							
 						</ul>
 					</div>
 				</div>

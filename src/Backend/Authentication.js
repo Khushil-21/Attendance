@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const UserAuthentication = require("../Database/DatabaseConnection");
+const GetStudentList = require("./StudentList");
+const AbsentWriter = require("./AbsentMarker");
+
 app.use(express.json());
 app.use(cors());
 const port = 5001
@@ -22,19 +25,21 @@ app.post("/UserAuthentication", async(req, res) => {
 	// console.log(AuthenticationStatus);
 	res.json({ AuthenticationStatus });
 });
-
-app.post("/GetStudentDetails", (req, res) => {
-	console.log(req.body.start);
-	let start = req.body.start;
-	console.log(req.body.end);
-	let end = req.body.end;
-	var students = [];
-	for (let i = 0; i <= 750; i++) {
-		students.push({ roll: i, name: "Khushil Shah" });
-	}
-
-	res.json({ student: students.slice(start, end) });
+app.post("/GetStudents", async(req, res) => {
+	const batch = req.body.batch
+	const students = GetStudentList(batch)
+	// console.log(students)
+	res.json({ students });
 });
+app.post("/Attendance", async(req, res) => {
+	const absenties = req.body.absenties
+	const StudentDetails = req.body.StudentDetails
+	// console.log(absenties)
+	// console.log(StudentDetails)
+	AbsentWriter(absenties, StudentDetails);
+});
+
+
 
 app.listen(port, () => {
 	console.log(`-------------- Server Started on port : ${port} --------------\n\n`);

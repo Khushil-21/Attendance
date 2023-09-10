@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Navbar } from "../Components/Navbar";
-import { Background } from "../Components/Background";
-import { Footer } from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
-
+import { Footer } from "../Components/Footer";
+import { Background } from "../Components/Background";
+import { Navbar } from "../Components/Navbar";
+import TeacherIcon from "../Icons/TeacherIcon";
 export const Teacher = () => {
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
@@ -31,11 +31,13 @@ export const Teacher = () => {
 		}
 	};
 	return (
-		<div>
+		<div>	
 			<Navbar />
 			<Background />
 			<div className="container-fluid section-2">
 				<div className="form-container">
+					<TeacherIcon width="120px" height="120px" />
+					<br></br>
 					<h1 className="form-heading">
 						<span className="letter-1">T</span>eacher{" "}
 						<span className="letter-1">L</span>og-

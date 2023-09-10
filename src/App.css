@@ -6,21 +6,24 @@
 	--secondary: rgb(0, 156, 212);
 	--primary: #85d5fd;
 	--light: #dcfcff;
-	--pure:white;
+	--pure: white;
 	--blur: rgba(200, 237, 251, 0.577);
 }
 *::selection {
 	color: var(--primary);
 	background-color: rgba(48, 58, 62, 0.649);
 }
-.red{
+.red {
 	color: red;
+
+	font-size: 15px;
+	font-weight: 700;
 }
 * {
-	font-family: "Arvo";
+	/* font-family: "Comfortaa"; */
 	padding: 0;
 	margin: 0;
-	box-sizing: border-box;
+	/* box-sizing: border-box; */
 }
 a {
 	text-decoration: none;
@@ -35,7 +38,7 @@ body {
 .fa-calculator {
 	margin-left: 20px;
 }
-.navbar{
+.navbar {
 	background-color: var(--dark) !important;
 }
 .navbar-brand {
@@ -44,15 +47,29 @@ body {
 	color: var(--pure) !important;
 	font-weight: 600;
 }
-.nav-link,.nav-link:visited {
+.nav-link,
+.nav-link:visited {
 	color: var(--pure) !important;
 	font-size: 15px;
+	transition: all ease 0s !important;
 }
 
-.active,
-.nav-link:is(:hover, :active) {
-	color: var(--secondary) !important;
+.nav-link:is(:hover, :active),
+.nav-link:is(:hover, :active) .home-icon {
+	background-color: var(--primary);
+	border-radius: 6px;
+	color: var(--dark) !important;
+	fill: var(--dark);
 }
+.home-icon {
+	fill: white;
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	margin-bottom: 8px;
+	transition: all ease 0s;
+}
+
 /*! Navbar Ending */
 
 /*! ----------------- Main Starting Home Page ----*/
@@ -89,7 +106,8 @@ body {
 	outline-width: 5px;
 	outline-color: var(--secondary);
 	transition: ease-in-out 0.1s;
-	font-size: 15px;
+	font-size: 17px;
+	font-weight: 700;
 }
 .heading1 {
 	/* border: 2px solid black; */
@@ -99,9 +117,15 @@ body {
 	font-weight: bolder;
 	font-family: "Arvo", serif;
 }
-.letter-1,
-.fa-calculator,.fa-star {
+.letter-1 {
 	color: var(--secondary);
+}
+.calculator-icon {
+	fill: var(--secondary);
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-bottom: 5px;
 }
 .login-button:is(:hover, :focus, :active) {
 	outline-width: 5px;
@@ -110,20 +134,36 @@ body {
 	outline-offset: 4px;
 	color: var(--pure);
 }
+.login-button:is(:hover, :focus, :active) .teacher-icon,
+.login-button:is(:hover, :focus, :active) .student-icon,
+.login-button:is(:hover, :focus, :active) .admin-icon {
+	width: 51px;
+	height: 51px;
+	fill: rgb(0, 0, 0);
+}
+
+.teacher-icon,
+.student-icon,
+.admin-icon {
+	fill: var(--dark);
+	/* width: 45px;
+	height: 45px; */
+	margin-right: 15px;
+}
 /*! ----------------- Main Ending -----------------*/
 /*! Footer Starting */
 .footer {
 	background-color: var(--dark);
-	height: 24.5vh;
+	height: 16vh;
 	/* border: 3px red solid; */
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 }
 .f1 {
 	/* border: 3px red solid; */
-	height: 18.5vh;
+	height: 12vh;
 	width: 100vw;
 }
 .f2 {
@@ -132,7 +172,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	/* border: 3px red solid; */
-	height: 6vh;
+	height: 4vh;
 	width: 100vw;
 	color: var(--pure);
 	font-size: 14px;
@@ -140,11 +180,13 @@ body {
 	font-weight: 600;
 }
 /*! Footer Ending */
-
+.heading {
+	margin-top: 5vh;
+}
 /*! ---------------- Admin page Starting ------- */
 .section-2 {
 	/* border: 2px solid rgb(226, 67, 67); */
-	height: 67vh;
+	height: 67.4vh;
 	width: 100vw;
 	display: flex;
 	justify-content: center;
@@ -154,68 +196,73 @@ body {
 	/* border: #e92758 3px solid; */
 	border-radius: 35px;
 	/* background-color: var(--light); */
-	height: 50vh;
+	height: 57vh;
 	width: 30vw;
 	display: flex;
 	flex-direction: column;
-	justify-content:space-evenly;
+	justify-content: space-evenly;
 	align-items: center;
 	/* padding: 20px;
 	border-radius: 10px;
 	background-color:var(--blur);
 	backdrop-filter: blur(7px); */
 }
-.submit-btn{
+.submit-btn {
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 7vh;
-	width: 10vw;
+	height: clamp(45px, 7vh, 60px);
+	width: clamp(90px, 15vw, 130px);
 	padding: 10px;
 	border-radius: 5px;
 	background-color: var(--dark);
 	color: var(--pure);
 	outline-style: solid;
 	outline-color: var(--light);
-	transition: ease-in-out 0.1s;
+	transition: all ease-in-out 0.1s;
 	font-size: 18px;
 	border: none;
+	margin-top: -20px;
 }
 .submit-btn:is(:hover, :active) {
 	outline-style: solid;
-
 	outline-width: 5px;
 	outline-color: var(--dark);
-	background-color: var(--secondary);
 	outline-offset: 4px;
+	background-color: var(--secondary);
 	color: var(--dark);
 }
-.form{
+.form {
 	/* border: #08D9D6 3px solid; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	height: 35vh;
-	
+	height: 40vh;
+
 	/* padding: 10px; */
 }
-.form-input{
+.form-input {
 	/* background-color: var(--light); */
 	padding-left: 10px;
 	outline: none;
 	border: none;
-	height: 7vh;
-	width: 20vw;
 	border-radius: 6px;
+	height: clamp(45px, 8vh, 60px);
+	width: clamp(175px, 20vw, 20vw);
+	height: 7vh;
 }
-.form-input:is(:active,:focus){
+.form-input:is(:active, :focus) {
 	box-shadow: 0px 0px 5px 2px var(--secondary);
+}
+
+.students-section {
+	min-height: 15vh;
 }
 /*! ---------------- Admin page Ending ------- */
 
-.admindashboard{
+.admindashboard {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -224,46 +271,28 @@ body {
 	margin: 3.5px;
 	/* border: #232323 solid; */
 }
-.admindashboard>div{
+.admindashboard > div > div{
+	/* border: 2px solid; */
+	height: 20vh;
+	width: 20vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: flex-start;
-	height: 44vh;
+}
+.admindashboard > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 53vh;
+	width: 30vw;
 	margin: 3.5px;
 	/* border: #232323 solid; */
 	padding: 20px;
 	border-radius: 10px;
-	background-color:var(--blur);
+	background-color: var(--blur);
 	backdrop-filter: blur(7px);
-}
-
-.teacherdashboard{
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	border: 2px solid red;
-	padding: 10px;
-}
-.sidebar{
-	border: 2px solid rgb(245, 228, 0);
-	height: 100vh;
-	width: 20vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	position: absolute;
-	left: 25px;
-	top: 145px;
-
-}
-
-.main{
-	margin: 10px;
-	border: 2px solid rgb(0, 245, 20);
-	height: 150vh;
-	width: 75vw;
 }
 /*! ---------------- Teacher page Starting ------- */
 .section-3 {
@@ -275,6 +304,170 @@ body {
 	align-items: center;
 }
 
+.domain {
+	/* border: 2px solid black; */
+	min-height: 40vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.students {
+	/* border: 2px solid black; */
+	min-height: 10.8vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.btn-container {
+	/* border: 2px solid rgb(228, 13, 13); */
+	height: 10vh;
+	width: 35vw;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.button {
+	/* padding: 14px; */
+	/* flex-grow: 1; */
+	height: 7vh;
+	width: 7vw;
+	background-color: var(--primary);
+	color: var(--dark);
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: all ease-in-out 0.1s;
+}
+.button:hover {
+	background-color: var(--dark);
+	color: var(--pure);
+	outline-style: solid;
+	outline-width: 3px;
+	outline-color: var(--dark);
+	outline-offset: 2px;
+}
+.lecture-selected,
+.batch-selected {
+	background-color: var(--dark);
+	color: var(--pure);
+}
+th,
+tr {
+	text-align: center;
+}
+th {
+	font-weight: 900;
+	/* border: 2px solid rgb(228, 13, 13); */
+
+}
+.left {
+	text-align: left;
+}
+.table {
+
+	height: 50vh;
+	width: 35vw;
+}
+
+.actions {
+	/* border: 2px solid rgb(63, 153, 51); */
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 40vw;
+}
+.student-list {
+	width: 100vw;
+	height: 67vh;
+	/* border: 2px solid rebeccapurple; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.hide {
+	display: none;
+}
+.checkbox {
+	accent-color: var(--secondary);
+	width: 15px;
+	height: 15px;
+	outline: none;
+	border: none;
+}
+.absent {
+	font-size: 17px;
+	font-weight: 700;
+	width: 10vw;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	color: red;
+	background-color: rgb(253, 227, 227);
+}
+.absent:hover,
+.absent:hover .absent-icon {
+	background-color: red;
+	color: white;
+	fill: white;
+}
+.absent-icon {
+	fill: red;
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+}
+.present {
+	font-size: 17px;
+	font-weight: 700;
+	width: 10vw;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	color: rgb(8, 160, 0);
+	background-color: rgb(208, 253, 208);
+}
+.present:hover,
+.present:hover .present-icon {
+	background-color: rgb(8, 160, 0);
+	color: white;
+	fill: white;
+}
+.present-icon {
+	fill: rgb(8, 160, 0);
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+}
+.download {
+	font-size: 17px;
+	font-weight: 700;
+	width: 10vw;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	color: rgb(0, 72, 159);
+	background-color: rgb(180, 231, 251);
+}
+.download:hover,
+.download:hover .download-icon {
+	background-color: var(--secondary);
+	color: white;
+	fill: white;
+}
+.download-icon {
+	fill: rgb(0, 72, 159);
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+}
+
 /*! ---------------- Teacher page Ending ------- */
 
 /*             >=278          */
@@ -282,8 +475,7 @@ body {
 	.login-button {
 		height: 7vh;
 		width: 40vw;
-	font-size: 15px;
-
+		font-size: 15px;
 	}
 	.error {
 		display: none;
@@ -306,7 +498,7 @@ body {
 	.f2 {
 		font-size: 13px;
 	}
-	.navbar-toggler-icon{
+	.navbar-toggler-icon {
 		font-size: 17px;
 	}
 }
@@ -315,12 +507,14 @@ body {
 	.login-button {
 		height: 7vh;
 		width: 40vw;
-	font-size: 16px;
-
+		font-size: 16px;
 	}
 	.navbar-brand {
 		transition: all ease-in-out;
 		font-size: 22px;
+	}
+	.section-1 {
+		height: 67.9vh;
 	}
 	.heading1 {
 		font-size: 25px;
@@ -339,8 +533,7 @@ body {
 	.login-button {
 		height: 8vh;
 		width: 25vw;
-	font-size: 18px;
-
+		font-size: 18px;
 	}
 	.navbar-collapse {
 		/* border: 3px solid rgb(0, 255, 200); */
@@ -353,7 +546,9 @@ body {
 		font-size: 18px;
 		margin: 10px;
 	}
-
+	.section-1 {
+		height: 69.2vh;
+	}
 	.heading1 {
 		font-size: 28px;
 	}
@@ -390,6 +585,7 @@ body {
 	.footer {
 		height: 24.1vh;
 	}
+
 	/* .f1 {
 	} */
 	.f2 {
@@ -418,7 +614,7 @@ body {
 		margin: 13px;
 	}
 	.footer {
-		height: 26vh;
+		height: 24.8vh;
 	}
 	/* .f1 {
 	} */
@@ -426,12 +622,92 @@ body {
 		height: 7vh;
 		font-size: 20px;
 	}
+	.section-1 {
+		height: 67.4vh;
+	}
 }
-
+@media only screen and (min-height: 1000px) and (min-width: 760px) {
+	.section-1 {
+		height: 70vh;
+	}
+	.login-button {
+		height: 8vh;
+		width: 26vw;
+		font-size: 26px;
+	}
+	.navbar-brand {
+		transition: all ease-in-out;
+		font-size: 29px;
+	}
+	.heading1 {
+		font-size: 40px;
+	}
+	.nav-link {
+		font-size: 21px;
+		margin: 13px;
+	}
+}
+@media only screen and (min-height: 1300px) {
+	.section-1 {
+		height: 70.9vh;
+	}
+	.login-button {
+		height: 8vh;
+		width: 26vw;
+		font-size: 29px;
+	}
+	.navbar-brand {
+		transition: all ease-in-out;
+		font-size: 30px;
+	}
+	.heading1 {
+		font-size: 40px;
+	}
+	.nav-link {
+		font-size: 21px;
+		margin: 13px;
+	}
+}
 @media only screen and (max-width: 279px) {
 	.footer,
 	.section-1,
-	.navbar,.area,.section-1,.section-2,.section-3 {
+	.navbar,
+	.area,
+	.section-1,
+	.section-2,
+	.section-3,
+	.teacher {
+		display: none;
+	}
+	body {
+		height: 100vh;
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--pure);
+		color: rgb(145, 0, 0);
+	}
+	.error {
+		padding-left: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.fa-triangle-exclamation {
+		/* display: block; */
+		font-size: 150px;
+	}
+}
+@media only screen and (max-height: 400px) {
+	.footer,
+	.section-1,
+	.navbar,
+	.area,
+	.section-1,
+	.section-2,
+	.section-3 {
 		display: none;
 	}
 	body {
@@ -456,149 +732,119 @@ body {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.area{
+.area {
 	z-index: -1;
-    background-color: var(--light);  
-    width: 100vw;
-    height:90vh;
-    position: absolute;  
+	background-color: var(--light);
+	width: 100vw;
+	height: 90vh;
+	position: absolute;
 }
 
-.circles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+.circles {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
-.circles li{
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 20px;
-    height: 20px;
-    background-color: var(--secondary);
-    animation: animate 10s linear infinite;
-    bottom: -90px;
-    
+.circles li {
+	position: absolute;
+	display: block;
+	list-style: none;
+	width: 20px;
+	height: 20px;
+	background-color: var(--secondary);
+	animation: animate 10s linear infinite;
+	bottom: -90px;
 }
 
-.circles li:nth-child(1){
-    left: 25%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
+.circles li:nth-child(1) {
+	left: 25%;
+	width: 80px;
+	height: 80px;
+	animation-delay: 0s;
 }
 
-
-.circles li:nth-child(2){
-    left: 10%;
-    width: 38px;
-    height: 38px;
-    animation-delay: 2s;
-    animation-duration: 12s;
+.circles li:nth-child(2) {
+	left: 10%;
+	width: 38px;
+	height: 38px;
+	animation-delay: 2s;
+	animation-duration: 12s;
 }
 
-.circles li:nth-child(3){
-    left: 70%;
-    width: 38px;
-    height: 38px;
-    animation-delay: 4s;
+.circles li:nth-child(3) {
+	left: 70%;
+	width: 38px;
+	height: 38px;
+	animation-delay: 4s;
 }
 
-.circles li:nth-child(4){
-    left: 40%;
-    width: 60px;
-    height: 60px;
-    animation-delay: 0s;
-    animation-duration: 12s;
+.circles li:nth-child(4) {
+	left: 40%;
+	width: 60px;
+	height: 60px;
+	animation-delay: 0s;
+	animation-duration: 12s;
 }
 
-.circles li:nth-child(5){
-    left: 65%;
-    width: 38px;
-    height: 38px;
-    animation-delay: 1s;
+.circles li:nth-child(5) {
+	left: 65%;
+	width: 38px;
+	height: 38px;
+	animation-delay: 1s;
 }
 
-.circles li:nth-child(6){
-    left: 75%;
-    width: 110px;
-    height: 110px;
-    animation-delay: 3s;
+.circles li:nth-child(6) {
+	left: 75%;
+	width: 110px;
+	height: 110px;
+	animation-delay: 3s;
 }
 
-.circles li:nth-child(7){
-    left: 35%;
-    width: 100px;
-    height: 100px;
-    animation-delay: 2s;
+.circles li:nth-child(7) {
+	left: 35%;
+	width: 100px;
+	height: 100px;
+	animation-delay: 2s;
 }
 
-.circles li:nth-child(8){
-    left: 50%;
-    width: 55px;
-    height: 55px;
-    animation-delay: 1s;
-    animation-duration: 15s;
+.circles li:nth-child(8) {
+	left: 50%;
+	width: 55px;
+	height: 55px;
+	animation-delay: 1s;
+	animation-duration: 15s;
 }
 
-.circles li:nth-child(9){
-    left: 20%;
-    width: 75px;
-    height: 75px;
-    animation-delay: 1s;
-    animation-duration: 15s;
+.circles li:nth-child(9) {
+	left: 20%;
+	width: 75px;
+	height: 75px;
+	animation-delay: 1s;
+	animation-duration: 15s;
 }
 
-.circles li:nth-child(10){
-    left: 85%;
-    width: 100px;
-    height: 100px;
-    animation-delay: 0s;
-    animation-duration: 11s;
+.circles li:nth-child(10) {
+	left: 85%;
+	width: 100px;
+	height: 100px;
+	animation-delay: 0s;
+	animation-duration: 11s;
 }
-
-
 
 @keyframes animate {
+	0% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+		border-radius: 0;
+	}
 
-    0%{
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-
-    100%{
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-
+	100% {
+		transform: translateY(-1000px) rotate(720deg);
+		opacity: 0;
+		border-radius: 50%;
+	}
 }

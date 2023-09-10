@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../Components/Navbar";
 import { Background } from "../Components/Background";
 import { Footer } from "../Components/Footer";
-import { useNavigate } from "react-router-dom";
+import AdminIcon from "../Icons/AdminIcon";
 
 export const Admin = () => {
 	const [Data, setData] = useState({});
@@ -29,9 +30,8 @@ export const Admin = () => {
 
 		if (json.AuthenticationStatus === "Successful") {
 			navigate("/AdminDashboard");
-		}
-		else {
-			setError("Invalid Credentials")
+		} else {
+			setError("Invalid Credentials");
 		}
 	};
 	return (
@@ -40,6 +40,7 @@ export const Admin = () => {
 			<Background />
 			<div className="container-fluid section-2">
 				<div className="form-container">
+					<AdminIcon width="110px" height="110px"/>
 					<h1 className="form-heading">
 						<span className="letter-1">A</span>dmin
 						<span className="letter-1">L</span>og-

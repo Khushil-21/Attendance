@@ -5,7 +5,7 @@ const UserAuthentication = async (username, password, role) => {
     let result
 	await mg.connect("mongodb://127.0.0.1:27017/attendance")
 		.then(async() => {
-            console.log("-------------- DataBase Connected Successfully --------------\n\n\n");
+            console.log("-------------- DataBase Connected Successfully --------------\n\n");
             data = await mg.connection.db.collection("role_authentication")
             result = await data.find({username,password,role}).toArray();
             console.log(result)
