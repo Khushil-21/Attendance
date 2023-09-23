@@ -1,12 +1,26 @@
 const fs = require('fs')
 var path = require('path');
-path=path.join(__dirname,"/DataFiles/StudentsStatus.csv")
+path=path.join(__dirname,"./DataFiles/StudentsStatus.csv")
 
-const AbsentWriter = (absenties, students) => {
+const AbsentWriter = (absenties, students,operation,rolls) => {
     var text='RollNo,Name,Status\n'
     console.log(absenties.indexOf(1))
     console.log(absenties)
-    // console.log(students)
+    console.log(operation)
+    console.log(rolls)
+
+    let temp = []
+
+    if (operation === 'present') {
+        for (let i of rolls) {
+            if (absenties.indexOf(`${i}`) === -1) {
+                temp.push(`${i}`)
+            }
+        }
+        absenties=temp
+    }
+
+    console.log(absenties)
     for (let i of students) {
             if (absenties.indexOf(`${i.RollNo}`) === -1)
             {

@@ -4,6 +4,7 @@ const cors = require("cors");
 const UserAuthentication = require("../Database/DatabaseConnection");
 const GetStudentList = require("./StudentList");
 const AbsentWriter = require("./AbsentMarker");
+const GetStudentsFromDatabase = require("../Database/StudentDataBase");
 
 app.use(express.json());
 app.use(cors());
@@ -27,16 +28,19 @@ app.post("/UserAuthentication", async(req, res) => {
 });
 app.post("/GetStudents", async(req, res) => {
 	const batch = req.body.batch
-	const students = GetStudentList(batch)
+	// const students = GetStudentList(batch)
+	const students = await GetStudentsFromDatabase(batch)
 	// console.log(students)
 	res.json({ students });
 });
 app.post("/Attendance", async(req, res) => {
 	const absenties = req.body.absenties
 	const StudentDetails = req.body.StudentDetails
+	const operation = req.body.operation
+	const roll = req.body.roll
 	// console.log(absenties)
 	// console.log(StudentDetails)
-	AbsentWriter(absenties, StudentDetails);
+	AbsentWriter(absenties, StudentDetails,operation,roll);
 });
 
 

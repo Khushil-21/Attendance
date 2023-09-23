@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AbsentIcon from "../Icons/AbsentIcon";
 import PresentIcon from "../Icons/PresentIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
+import file from "../Backend/DataFiles/StudentsStatus.csv";
 
 export const StudentDetails = () => {
 	const [SelectedData, setSelectedData] = useState({});
@@ -28,6 +29,7 @@ export const StudentDetails = () => {
 		element1[0].classList.toggle("lecture-selected");
 	};
 	const activeHandler2 = async (e) => {
+		let er = false;
 		const element1 = document.querySelectorAll(
 			`input[value=${e.target.value}]`
 		);
@@ -39,8 +41,7 @@ export const StudentDetails = () => {
 			setStudentDetails([]);
 			settext("false");
 			setAbsenties([]);
-			document.getElementsByTagName("table")[0].classList.remove("table");
-			document.getElementsByClassName("student-list")[0].classList.add("hide");
+			er = true;
 		}
 		setSelectedData({ ...SelectedData, Batch: e.target.value });
 		const element2 = document.getElementsByClassName("batch-selected");
@@ -69,10 +70,15 @@ export const StudentDetails = () => {
 			);
 			setStudentDetails(json.students);
 			settext("true");
-			document.getElementsByTagName("table")[0].classList.add("table");
 			document
 				.getElementsByClassName("student-list")[0]
 				.classList.remove("hide");
+		} else {
+			if (er === true) {
+				document
+					.getElementsByClassName("student-list")[0]
+					.classList.add("hide");
+			}
 		}
 	};
 	const checkHandler = (e) => {
@@ -92,30 +98,18 @@ export const StudentDetails = () => {
 	};
 	const clickHandler = async (e) => {
 		if (e.target.name !== "download") {
-			if (e.target.name === "present") {
-			} else {
-				const res = await fetch("http://localhost:5001/Attendance", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ absenties, StudentDetails }),
-				});
-				const json = await res.json();
-			}
-		} else {
-			fetch("../Backend/DataFiles/StudentsDetails.json").then((response) => {
-				response.blob().then((blob) => {
-					// Creating new object of PDF file
-					const fileURL = window.URL.createObjectURL(blob);
-					// Setting various property values
-					let alink = document.createElement("a");
-					alink.href = fileURL;
-					alink.download = "StudentsStatus.csv";
-					alink.click();
-				});
+			// console.log(e.target.name);
+			// console.log(roll);
+			let operation = e.target.name;
+			const res = await fetch("http://localhost:5001/Attendance", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ absenties, StudentDetails, operation, roll }),
 			});
-		}
+			const json = await res.json();
+		} 
 	};
 	return (
 		<div>
@@ -183,7 +177,7 @@ export const StudentDetails = () => {
 
 				<div className="student-list hide">
 					<div>
-						<table>
+						<table className="table">
 							<tr>
 								<th>{text === "true" ? "Roll-No" : ""}</th>
 								<th>{text === "true" ? "Enrollment-No" : ""}</th>
@@ -202,12 +196,18 @@ export const StudentDetails = () => {
 										</td>
 										<td align="center">
 											{text === "true" ? (
-												<input
-													className="checkbox"
-													type="checkbox"
-													value={value.RollNo}
-													onChange={checkHandler}
-												></input>
+												<span>
+													<input
+														id={value.RollNo}
+														className="checkbox"
+														type="checkbox"
+														value={value.RollNo}
+														onChange={checkHandler}
+													></input>
+													<label for={value.RollNo}>
+														<div id="tick_mark"></div>
+													</label>
+												</span>
 											) : (
 												""
 											)}
@@ -217,7 +217,7 @@ export const StudentDetails = () => {
 							})}
 						</table>
 					</div>
-					{absenties}
+					{/* {absenties} */}
 					<div className="actions">
 						<button className="absent" name="absent" onClick={clickHandler}>
 							Absent
@@ -227,10 +227,12 @@ export const StudentDetails = () => {
 							Present
 							<PresentIcon />
 						</button>
-						<button className="download" name="download" onClick={clickHandler}>
-							Download
-							<DownloadIcon />
-						</button>
+						<a href={file} download={SelectedData.Batch} target="_blank" rel="noreferrer">
+							<button className="download" name="download">
+								Download
+								<DownloadIcon />
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>

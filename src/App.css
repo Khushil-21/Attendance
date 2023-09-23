@@ -10,8 +10,26 @@
 	--blur: rgba(200, 237, 251, 0.577);
 }
 *::selection {
-	color: var(--primary);
-	background-color: rgba(48, 58, 62, 0.649);
+	background-color: rebeccapurple;
+}
+::-webkit-scrollbar {
+	width: 15px;
+	display: none;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	background: #4c4ccd21;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 255, 0.989);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+border-radius: 10px;
 }
 .red {
 	color: red;
@@ -31,6 +49,10 @@ a {
 body {
 	overflow-x: hidden;
 	background-color: var(--light);
+	/* border: 5px solid green; */
+
+	min-height: 100vh;
+	
 }
 /*! all css ending */
 
@@ -156,6 +178,7 @@ body {
 	background-color: var(--dark);
 	height: 16vh;
 	/* border: 3px red solid; */
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -271,7 +294,7 @@ body {
 	margin: 3.5px;
 	/* border: #232323 solid; */
 }
-.admindashboard > div > div{
+.admindashboard > div > div {
 	/* border: 2px solid; */
 	height: 20vh;
 	width: 20vw;
@@ -313,12 +336,13 @@ body {
 	align-items: center;
 }
 .students {
-	/* border: 2px solid black; */
+	/* border: 2px solid rgba(211, 6, 6, 0.829); */
 	min-height: 10.8vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
+	/* padding: 10px; */
 }
 .btn-container {
 	/* border: 2px solid rgb(228, 13, 13); */
@@ -357,19 +381,26 @@ body {
 th,
 tr {
 	text-align: center;
+	font-size: 20px;
+}
+tr {
+	font-weight: 600;
+	/* border: 2px solid; */
+	font-size: 20px;
+}
+td{
+	padding: 10px;
 }
 th {
 	font-weight: 900;
 	/* border: 2px solid rgb(228, 13, 13); */
-
 }
 .left {
 	text-align: left;
 }
 .table {
-
-	height: 50vh;
-	width: 35vw;
+	/* height: 65vh; */
+	width: 45vw;
 }
 
 .actions {
@@ -381,23 +412,117 @@ th {
 }
 .student-list {
 	width: 100vw;
-	height: 67vh;
+	min-height: 85vh;
 	/* border: 2px solid rebeccapurple; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
+	margin: 20px;
 }
 .hide {
 	display: none;
 }
-.checkbox {
-	accent-color: var(--secondary);
-	width: 15px;
-	height: 15px;
-	outline: none;
-	border: none;
+
+td span {
+	background-color: #23232300 !important;
+	position: relative;
 }
+.checkbox {
+	display: none;
+}
+label {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: -50%;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background-color:red;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	cursor: pointer;
+	transition: 0.2s ease transform, 0.2s ease background-color,
+		0.2s ease box-shadow;
+	overflow: hidden;
+	z-index: 1;
+}
+label:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	width: 23px;
+	height: 22px;
+	margin: 0 auto;
+	background-color: rgb(253, 227, 227);
+	transform: translateY(-50%);
+	border-radius: 50%;
+	box-shadow: inset 0 5px 10px rgba(249, 242, 242, 0.642);
+	transition: 0.2s ease width, 0.2s ease height;
+}
+
+label:active {
+	transform: translateY(-50%) scale(0.9);
+}
+
+#tick_mark {
+	position: absolute;
+	top: 0px;
+	right: 0;
+	left: 0;
+	width: 15px;
+	height: 18px;
+	margin: 0 auto;
+	margin-left: 5px;
+	transform: rotateZ(-40deg);
+}
+
+#tick_mark:before,
+#tick_mark:after {
+	content: "";
+	position: absolute;
+	background-color: #fff;
+	border-radius: 2px;
+	opacity: 0;
+	transition: 0.2s ease transform, 0.2s ease opacity;
+}
+
+#tick_mark:before {
+	left: 0;
+	bottom: 0;
+	width: 4px;
+	height: 10px;
+	box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);
+	transform: translateY(-68px);
+}
+
+#tick_mark:after {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 4px;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);
+	transform: translateX(78px);
+}
+
+.checkbox:checked + label {
+	background-color: #07d410 !important;
+}
+
+.checkbox:checked + label:before {
+	width: 0;
+	height: 0;
+}
+
+.checkbox:checked + label #tick_mark:before,
+.checkbox:checked + label #tick_mark:after {
+	transform: translate(0);
+	opacity: 1;
+}
+
 .absent {
 	font-size: 17px;
 	font-weight: 700;
