@@ -3,10 +3,12 @@ import { Footer } from "../Components/Footer";
 import { Background } from "../Components/Background";
 import { Navbar } from "../Components/Navbar";
 import AdminIcon from "../Icons/AdminIcon";
+import { Preloader } from "../Components/Preloader";
 
 export const AdminDashboard = () => {
 	return (
 		<div>
+			<Preloader/>
 			<Navbar />
 			<Background />
 			<div className="admindashboard">

@@ -4,6 +4,7 @@ import { Footer } from "../Components/Footer";
 import { Background } from "../Components/Background";
 import { Navbar } from "../Components/Navbar";
 import TeacherIcon from "../Icons/TeacherIcon";
+import { Preloader } from "../Components/Preloader";
 export const Teacher = () => {
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
@@ -32,6 +33,7 @@ export const Teacher = () => {
 	};
 	return (
 		<div>	
+			<Preloader/>
 			<Navbar />
 			<Background />
 			<div className="container-fluid section-2">

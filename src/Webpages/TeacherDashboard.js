@@ -2,9 +2,11 @@ import { StudentDetails } from "../Components/StudentDetails";
 import { Footer } from "../Components/Footer";
 import { Navbar } from "../Components/Navbar";
 import TeacherIcon from "../Icons/TeacherIcon";
+import { Preloader } from "../Components/Preloader";
 export const TeacherDashboard = () => {
 	return (
 		<div>
+			<Preloader/>
 			<Navbar />
 			<div className="teacher">
 				<h1 align="center" className="heading">

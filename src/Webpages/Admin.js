@@ -4,6 +4,7 @@ import { Navbar } from "../Components/Navbar";
 import { Background } from "../Components/Background";
 import { Footer } from "../Components/Footer";
 import AdminIcon from "../Icons/AdminIcon";
+import { Preloader } from "../Components/Preloader";
 
 export const Admin = () => {
 	const [Data, setData] = useState({});
@@ -36,6 +37,7 @@ export const Admin = () => {
 	};
 	return (
 		<div>
+			<Preloader/>
 			<Navbar />
 			<Background />
 			<div className="container-fluid section-2">

@@ -6,9 +6,11 @@ import { Navbar } from "../Components/Navbar";
 import AdminIcon from "../Icons/AdminIcon";
 import TeacherIcon from "../Icons/TeacherIcon";
 import StudentIcon from "../Icons/StudentIcon";
+import { Preloader } from "../Components/Preloader";
 export const Home = () => {
 	return (
 		<div>
+			<Preloader/>
 			<Navbar />
 			<Background />
 			<div className="container-fluid section-1">
