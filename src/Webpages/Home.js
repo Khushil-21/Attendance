@@ -11,7 +11,7 @@ export const Home = () => {
 	return (
 		<div>
 			<Preloader/>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-1">
 				<div className="mainsection">
@@ -36,7 +36,7 @@ export const Home = () => {
 					</Link>
 				</div>
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };

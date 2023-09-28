@@ -38,7 +38,7 @@ export const Admin = () => {
 	return (
 		<div>
 			<Preloader/>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-2">
 				<div className="form-container">
@@ -69,7 +69,7 @@ export const Admin = () => {
 					{/* {JSON.stringify(Data)} */}
 				</div>
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };

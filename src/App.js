@@ -6,20 +6,27 @@ import { Home } from "./Webpages/Home";
 import { Student } from "./Webpages/Student";
 import { Teacher } from "./Webpages/Teacher";
 import { TeacherDashboard } from "./Webpages/TeacherDashboard";
-
+import { OverallAttendance } from "./Webpages/OverallAttendance";
+import { Navbar } from "./Components/Navbar";
+import { Footer } from "./Components/Footer";
+import { Background } from "./Components/Background";
 
 function App() {
 	return (
 		<div className="App">
 			<Router>
+				<Navbar/>
 				<Routes>
-					<Route path="/" element={ <Home />}></Route>
-					<Route path="/Admin" element={<Admin />}></Route>
-					<Route path="/Teacher" element={<Teacher />}></Route>
-					<Route path="/Student" element={<Student />}></Route>
-					<Route path="/AdminDashboard" element={<AdminDashboard/>}></Route>
-					<Route path="/TeacherDashboard" element={<TeacherDashboard />}></Route>
+					<Route path="" element={<Home />}>
+					</Route>
+					<Route path="Admin" element={<Admin />}></Route>
+					<Route path="Teacher" element={<Teacher />}></Route>
+					<Route path="Student" element={<Student />}></Route>
+					<Route path="AdminDashboard" element={<AdminDashboard />}></Route>
+					<Route path="TeacherDashboard" element={<TeacherDashboard />}></Route>
+					<Route path="Overall-Attendance" element={<OverallAttendance />}></Route>
 				</Routes>
+				<Footer/>
 			</Router>
 		</div>
 	);

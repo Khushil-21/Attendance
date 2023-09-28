@@ -7,10 +7,10 @@ export const Student = () => {
 	return (
 		<div>
 			<Preloader/>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Background />
 			<h1>We will Think Some Thing</h1>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };

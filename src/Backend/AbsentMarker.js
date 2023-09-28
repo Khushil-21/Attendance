@@ -2,7 +2,7 @@ const fs = require('fs')
 var path = require('path');
 path=path.join(__dirname,"./DataFiles/StudentsStatus.csv")
 
-const AbsentWriter = (absenties, students,operation,rolls) => {
+const AbsentWriter = (absenties, students,operation,rolls,selectedData) => {
     var text='RollNo,Name,Status\n'
     console.log(absenties.indexOf(1))
     console.log(absenties)

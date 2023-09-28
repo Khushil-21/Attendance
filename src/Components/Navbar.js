@@ -1,9 +1,11 @@
 import React from "react";
 import CalculatorIcon from "../Icons/CalculatorIcon";
 import HomeIcon from "../Icons/HomeIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div>
 			<nav
@@ -35,6 +37,11 @@ export const Navbar = () => {
 								<Link className="nav-link active" aria-current="page" to="/">
 									<HomeIcon/>
 									Home
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" aria-current="page" onClick={() => { navigate(-1) }}>
+									Go Back
 								</Link>
 							</li>
 							

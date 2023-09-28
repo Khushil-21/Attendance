@@ -407,11 +407,11 @@ img,
 svg {
   vertical-align: middle;
 }
-
+/* 
 table {
   caption-side: bottom;
   border-collapse: collapse;
-}
+} */
 
 caption {
   padding-top: 0.5rem;
@@ -419,7 +419,7 @@ caption {
   color: var(--bs-secondary-color);
   text-align: left;
 }
-
+/* 
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
@@ -434,7 +434,7 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
-}
+} */
 
 label {
   display: inline-block;

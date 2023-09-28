@@ -3,6 +3,9 @@ import AbsentIcon from "../Icons/AbsentIcon";
 import PresentIcon from "../Icons/PresentIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
 import file from "../Backend/DataFiles/StudentsStatus.csv";
+import { DailyIcon } from "../Icons/DailyIcon";
+import { EyeIcon } from "../Icons/EyeIcon";
+import { Link } from "react-router-dom";
 
 export const StudentDetails = () => {
 	const [SelectedData, setSelectedData] = useState({});
@@ -12,6 +15,26 @@ export const StudentDetails = () => {
 	const [text, settext] = useState("false");
 	const [absenties, setAbsenties] = useState([]);
 
+	const activeHandler0 = (e) => {
+		const element1 = document.querySelectorAll(
+			`input[value=${e.target.value}]`
+		);
+
+		if (SelectedData.Lecture === undefined) {
+			setError("Please Select Lecture First");
+			return;
+		}
+		setError("");
+		setSelectedData({ ...SelectedData, Day: e.target.value });
+		const element3 = document.getElementsByClassName("day-selected");
+		for (let i of element3) {
+			// if (i !== element1[0]) {
+			// 	i.classList.remove("lecture-selected");
+			// }
+			i.classList.remove("day-selected");
+		}
+		element1[0].classList.toggle("day-selected");
+	};
 	const activeHandler1 = (e) => {
 		const element1 = document.querySelectorAll(
 			`input[value=${e.target.value}]`
@@ -35,6 +58,10 @@ export const StudentDetails = () => {
 		);
 		if (SelectedData.Lecture === undefined) {
 			setError("Please Select Lecture First");
+			return;
+		}
+		if (SelectedData.Day === undefined) {
+			setError("Please Select Day First");
 			return;
 		}
 		if (SelectedData.Batch !== e.target.value) {
@@ -97,19 +124,16 @@ export const StudentDetails = () => {
 		}
 	};
 	const clickHandler = async (e) => {
-		if (e.target.name !== "download") {
-			// console.log(e.target.name);
-			// console.log(roll);
-			let operation = e.target.name;
-			const res = await fetch("http://localhost:5001/Attendance", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ absenties, StudentDetails, operation, roll }),
-			});
-			const json = await res.json();
-		} 
+		console.log(e.target.name);
+		// console.log(roll);
+		const res = await fetch("http://localhost:5001/Attendance", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ absenties, StudentDetails, operation:e.target.name, roll ,SelectedData}),
+		});
+		const json = await res.json();
 	};
 	return (
 		<div>
@@ -142,6 +166,47 @@ export const StudentDetails = () => {
 						onClick={activeHandler1}
 					></input>
 				</div>
+
+				<h3>Select Day</h3>
+				<div className="day-container">
+					<input
+						className="button"
+						type="button"
+						value="Monday"
+						onClick={activeHandler0}
+					></input>
+					<input
+						className="button"
+						type="button"
+						value="Tuesday"
+						onClick={activeHandler0}
+					></input>
+					<input
+						className="button"
+						type="button"
+						value="Wednesday"
+						onClick={activeHandler0}
+					></input>
+					<input
+						className="button"
+						type="button"
+						value="Thursday"
+						onClick={activeHandler0}
+					></input>
+					<input
+						className="button"
+						type="button"
+						value="Friday"
+						onClick={activeHandler0}
+					></input>
+					<input
+						className="button"
+						type="button"
+						value="Saturday"
+						onClick={activeHandler0}
+					></input>
+				</div>
+
 				<h3>Select Batch</h3>
 				<div className="btn-container">
 					<input
@@ -172,7 +237,7 @@ export const StudentDetails = () => {
 			</div>
 
 			<div className="students">
-				{/* <h6 align="center">{JSON.stringify(SelectedData)}</h6> */}
+				<h6 align="center">{JSON.stringify(SelectedData)}</h6>
 				{/* <h6 align="center">{JSON.stringify(StudentDetails)}</h6> */}
 
 				<div className="student-list hide">
@@ -204,7 +269,7 @@ export const StudentDetails = () => {
 														value={value.RollNo}
 														onChange={checkHandler}
 													></input>
-													<label for={value.RollNo}>
+													<label className="label-checkbox" for={value.RollNo}>
 														<div id="tick_mark"></div>
 													</label>
 												</span>
@@ -227,7 +292,22 @@ export const StudentDetails = () => {
 							Present
 							<PresentIcon />
 						</button>
-						<a href={file} download={SelectedData.Batch} target="_blank" rel="noreferrer">
+						<Link to="/Overall-Attendance">
+						<button className="overall" name="overall">
+							OverAll 
+							<EyeIcon/>
+						</button>
+						</Link>
+						<button className="daily" name="daily" onClick={clickHandler}>
+							Daily 
+							<DailyIcon/>
+						</button>
+						<a
+							href={file}
+							download={SelectedData.Batch}
+							target="_blank"
+							rel="noreferrer"
+						>
 							<button className="download" name="download">
 								Download
 								<DownloadIcon />

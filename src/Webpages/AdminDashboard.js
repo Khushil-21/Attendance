@@ -9,7 +9,7 @@ export const AdminDashboard = () => {
 	return (
 		<div>
 			<Preloader/>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Background />
 			<div className="admindashboard">
 				<div>
@@ -32,7 +32,7 @@ export const AdminDashboard = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };

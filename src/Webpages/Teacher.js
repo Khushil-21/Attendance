@@ -34,7 +34,7 @@ export const Teacher = () => {
 	return (
 		<div>	
 			<Preloader/>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-2">
 				<div className="form-container">
@@ -65,7 +65,7 @@ export const Teacher = () => {
 					</form>
 				</div>
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };
