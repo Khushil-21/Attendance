@@ -5,6 +5,7 @@ import { Background } from "../Components/Background";
 import { Footer } from "../Components/Footer";
 import AdminIcon from "../Icons/AdminIcon";
 import { Preloader } from "../Components/Preloader";
+import axios from "axios";
 
 export const Admin = () => {
 	const [Data, setData] = useState({});
@@ -19,21 +20,15 @@ export const Admin = () => {
 	const Submit = async (e) => {
 		e.preventDefault();
 		const { username, password } = Data;
-		const res = await fetch("http://localhost:5001/RoleAuthentication", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ username, password, role: "ADMIN" }),
-		});
-		const json = await res.json();
-		console.log(json.AuthenticationStatus);
-
-		if (json.AuthenticationStatus === "Successful") {
-			navigate("/AdminDashboard");
-		} else {
-			setError("Invalid Credentials");
-		}
+		axios
+			.post("http://localhost:5001/RoleAuthentication", { username, password, role: "ADMIN" })
+			.then((response) => {
+				if (response.data.AuthenticationStatus === "Successful") {
+					navigate("/AdminDashboard");
+				} else {
+					setError("Invalid Credentials");
+				}
+			});
 	};
 	return (
 		<div>

@@ -5,6 +5,7 @@ import { Background } from "../Components/Background";
 import { Navbar } from "../Components/Navbar";
 import TeacherIcon from "../Icons/TeacherIcon";
 import { Preloader } from "../Components/Preloader";
+import axios from "axios";
 export const Teacher = () => {
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
@@ -15,25 +16,20 @@ export const Teacher = () => {
 	const Submit = async (e) => {
 		e.preventDefault();
 		const { username, password } = Data;
-		const res = await fetch("http://localhost:5001/RoleAuthentication", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ username, password, role: "TEACHER" }),
-		});
-		const json = await res.json();
-		console.log(json.AuthenticationStatus);
-
-		if (json.AuthenticationStatus === "Successful") {
-			navigate("/TeacherDashboard");
-		} else {
-			setError("Invalid Credentials");
-		}
+		await axios
+			.post("http://localhost:5001/RoleAuthentication", { username, password, role: "TEACHER" })
+			.then((response) => {
+				console.log(response)
+				if (response.data.AuthenticationStatus === "Successful") {
+					navigate("/TeacherDashboard");
+				} else {
+					setError("Invalid Credentials");
+				}
+			});
 	};
 	return (
 		<div>	
-			<Preloader/>
+			{/* <Preloader/> */}
 			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-2">

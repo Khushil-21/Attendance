@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import AbsentIcon from "../Icons/AbsentIcon";
 import PresentIcon from "../Icons/PresentIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
-import file from "../Backend/DataFiles/StudentsStatus.csv";
+import file from "../Database/DataFiles/StudentsStatus.csv";
 import { DailyIcon } from "../Icons/DailyIcon";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const StudentDetails = () => {
 	const [SelectedData, setSelectedData] = useState({});
@@ -80,33 +81,32 @@ export const StudentDetails = () => {
 		}
 		element1[0].classList.toggle("batch-selected");
 		const batch = e.target.value;
-		const res = await fetch("http://localhost:5001/GetStudents", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ batch }),
-		});
-		const json = await res.json();
-		// console.log(json.students.length);
-		if (json.students.length !== undefined && json.students.length !== 0) {
-			setRoll(
-				json.students.map((value) => {
-					return value.RollNo;
-				})
-			);
-			setStudentDetails(json.students);
-			settext("true");
-			document
-				.getElementsByClassName("student-list")[0]
-				.classList.remove("hide");
-		} else {
-			if (er === true) {
-				document
-					.getElementsByClassName("student-list")[0]
-					.classList.add("hide");
-			}
-		}
+
+		await axios
+			.post("http://localhost:5001/GetStudents", { batch })
+			.then((response) => {
+				if (
+					response.data.students.length !== undefined &&
+					response.data.students.length !== 0
+				) {
+					setRoll(
+						response.data.students.map((value) => {
+							return value.RollNo;
+						})
+					);
+					setStudentDetails(response.data.students);
+					settext("true");
+					document
+						.getElementsByClassName("student-list")[0]
+						.classList.remove("hide");
+				} else {
+					if (er === true) {
+						document
+							.getElementsByClassName("student-list")[0]
+							.classList.add("hide");
+					}
+				}
+			});
 	};
 	const checkHandler = (e) => {
 		// console.log(e.target.value);
@@ -126,14 +126,15 @@ export const StudentDetails = () => {
 	const clickHandler = async (e) => {
 		console.log(e.target.name);
 		// console.log(roll);
-		const res = await fetch("http://localhost:5001/Attendance", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ absenties, StudentDetails, operation:e.target.name, roll ,SelectedData}),
-		});
-		const json = await res.json();
+		axios
+			.post("http://localhost:5001/Attendance", {
+				absenties,
+				StudentDetails,
+				operation: e.target.name,
+				roll,
+				SelectedData,
+			})
+			.then((response) => {});
 	};
 	return (
 		<div>
@@ -293,14 +294,14 @@ export const StudentDetails = () => {
 							<PresentIcon />
 						</button>
 						<Link to="/Overall-Attendance">
-						<button className="overall" name="overall">
-							OverAll 
-							<EyeIcon/>
-						</button>
+							<button className="overall" name="overall">
+								OverAll
+								<EyeIcon />
+							</button>
 						</Link>
 						<button className="daily" name="daily" onClick={clickHandler}>
-							Daily 
-							<DailyIcon/>
+							Daily
+							<DailyIcon />
 						</button>
 						<a
 							href={file}
