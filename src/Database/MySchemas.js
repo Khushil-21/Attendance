@@ -34,6 +34,16 @@ const RoleSchema = mg.Schema({
 const RoleModel = new mg.model("Role-Authentications", RoleSchema)
 
 
+const TimeTableSchema = mg.Schema({
+    "Batch": String,
+    "Lecture-1": Array,
+    "Lecture-2": Array,
+    "Lecture-3": Array,
+    "Lecture-4": Array
+})
+const TimeTableModel = new mg.model("Time-Table", TimeTableSchema)
 
 
-module.exports={StudentModel,RoleModel}
+
+
+module.exports={StudentModel,RoleModel,TimeTableModel}

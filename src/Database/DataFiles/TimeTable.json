@@ -2,8 +2,22 @@
 	{
 		"Batch": "Batch-1",
 		"Lecture-1": ["FSD", "PYTHON", "COA", "DM"],
-		"Lecture-2": ["FSD", "PYTHON", "COA", "DM"],
-		"Lecture-3": ["FSD", "PYTHON", "COA", "DM"],
-		"Lecture-4": ["FSD", "PYTHON", "COA", "DM"]
+		"Lecture-2": ["PYTHON", "PYTHON", "COA", "FSD"],
+		"Lecture-3": ["DM", "PYTHON", "PYTHON", "COA"],
+		"Lecture-4": ["DM", "FSD", "FSD", "PYTHON"]
+	},
+	{
+		"Batch": "Batch-2",
+		"Lecture-1": ["FSD", "PYTHON", "COA", "DM"],
+		"Lecture-2": ["PYTHON", "PYTHON", "COA", "FSD"],
+		"Lecture-3": ["DM", "PYTHON", "PYTHON", "COA"],
+		"Lecture-4": ["DM", "FSD", "FSD", "PYTHON"]
+	},
+	{
+		"Batch": "Batch-3",
+		"Lecture-1": ["FSD", "PYTHON", "COA", "DM"],
+		"Lecture-2": ["PYTHON", "PYTHON", "COA", "FSD"],
+		"Lecture-3": ["DM", "PYTHON", "PYTHON", "COA"],
+		"Lecture-4": ["DM", "FSD", "FSD", "PYTHON"]
 	}
 ]
