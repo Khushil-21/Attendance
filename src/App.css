@@ -709,10 +709,20 @@ td span {
 	font-weight: 700;
 
 }
+.below:hover {
+	color: #fae8e8;
+	background-color: red;
+
+}
 .medium{
 	background-color: #fff5d6;
 	color: rgb(231, 173, 0);
 	font-weight: 700;
+
+}
+.medium:hover {
+	background-color: rgb(231, 173, 0);;
+	color: #fff5d6;
 
 }
 .report{
@@ -737,39 +747,6 @@ td span {
 .hover:hover{
 	background-color: var(--secondary);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

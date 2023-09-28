@@ -5,40 +5,40 @@
 			"EnrollNo": 2021002171210158,
 			"Name": "Khushil",
 			"Batch": "Batch-1",
-			"FSD": 100,
-			"PYTHON": 100,
-			"COA": 100,
-			"DM": 100
+			"FSD": 50,
+			"PYTHON": 86,
+			"COA": 80,
+			"DM": 93
 		},
 		{
 			"RollNo": 2,
 			"EnrollNo": 2021002171210183,
 			"Name": "Tirth",
 			"Batch": "Batch-1",
-			"FSD": 100,
-			"PYTHON": 100,
-			"COA": 100,
-			"DM": 100
+			"FSD": 10,
+			"PYTHON": 70,
+			"COA": 90,
+			"DM": 85
 		},
 		{
 			"RollNo": 3,
 			"EnrollNo": 2021002171210143,
 			"Name": "Meet",
 			"Batch": "Batch-1",
-			"FSD": 100,
-			"PYTHON": 100,
-			"COA": 100,
-			"DM": 100
+			"FSD": 45,
+			"PYTHON": 89,
+			"COA": 78,
+			"DM": 46
 		},
 		{
 			"RollNo": 4,
 			"EnrollNo": 2021002171210153,
 			"Name": "Harmit",
 			"Batch": "Batch-1",
-			"FSD": 100,
-			"PYTHON": 100,
-			"COA": 100,
-			"DM": 100
+			"FSD": 89,
+			"PYTHON": 73,
+			"COA": 87,
+			"DM": 43
 		},
 		{
 			"RollNo": 5,

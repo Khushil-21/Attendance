@@ -19,7 +19,7 @@ export const Admin = () => {
 	const Submit = async (e) => {
 		e.preventDefault();
 		const { username, password } = Data;
-		const res = await fetch("http://localhost:5001/UserAuthentication", {
+		const res = await fetch("http://localhost:5001/RoleAuthentication", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -116,40 +116,40 @@ export const OverallAttendance = () => {
 												? "above"
 												: (student.FSD / FSD_Total) * 100 <= 75
 												? "below"
-												: ""
+												: "medium"
 										}
 									>
 										{(student.FSD / FSD_Total) * 100}%
 									</td>
 									<td
 										className={
-											(student.FSD / FSD_Total) * 100 >= 90
+											(student.PYTHON / PYTHON_Total) * 100 >= 90
 												? "above"
-												: (student.FSD / FSD_Total) * 100 <= 75
+												: (student.PYTHON / PYTHON_Total) * 100 <= 75
 												? "below"
-												: ""
+												: "medium"
 										}
 									>
 										{(student.PYTHON / PYTHON_Total) * 100}%
 									</td>
 									<td
 										className={
-											(student.FSD / FSD_Total) * 100 >= 90
+											(student.COA / COA_Total) * 100 >= 90
 												? "above"
-												: (student.FSD / FSD_Total) * 100 <= 75
+												: (student.COA / COA_Total) * 100 <= 75
 												? "below"
-												: ""
+												: "medium"
 										}
 									>
 										{(student.COA / COA_Total) * 100}%
 									</td>
 									<td
 										className={
-											(student.FSD / FSD_Total) * 100 >= 90
+											(student.DM / DM_Total) * 100 >= 90
 												? "above"
-												: (student.FSD / FSD_Total) * 100 <= 75
+												: (student.DM / DM_Total) * 100 <= 75
 												? "below"
-												: ""
+												: "medium"
 										}
 									>
 										{(student.DM / DM_Total) * 100}%
@@ -160,7 +160,7 @@ export const OverallAttendance = () => {
 												? "above"
 												: (student.FSD / FSD_Total) * 100 <= 75
 												? "below"
-												: ""
+												: "medium"
 										}
 									>
 										{(((student.DM / DM_Total) * 100 + (student.FSD / FSD_Total) * 100 + (student.COA / COA_Total) * 100 +(student.PYTHON / PYTHON_Total) * 100  ) /4).toFixed(2)}%

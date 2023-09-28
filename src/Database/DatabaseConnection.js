@@ -1,26 +1,37 @@
 const mg = require("mongoose");
-var data
-const UserAuthentication = async (username, password, role) => {
-    let er = true
-    let result
-	await mg.connect("mongodb://127.0.0.1:27017/attendance")
-		.then(async() => {
-            console.log("-------------- DataBase Connected Successfully --------------\n\n");
-            data = await mg.connection.db.collection("role_authentication")
-            result = await data.find({username,password,role}).toArray();
-            console.log(result)
-            er = false;
-		})
-		.catch((err) => {
-			console.log(err);
-        });
-    if (er) {
-        
-    }
-    else {
-        return result
-    }
+const { RoleModel, StudentModel } = require("./MySchemas");
 
+
+const RoleAuthentication = async (username, password, role) => {
+	let result;
+	result = await RoleModel.find({ username, password, role });
+	console.log(result);
+	return result;
 };
 
-module.exports = UserAuthentication;
+
+const GetStudentsFromDatabase = async (batch) => {
+	let result;
+	if (batch === "All") {
+		result = await StudentModel.find();
+	} else {
+		result = await StudentModel.find({ Batch: batch });
+	}
+	return result;
+};
+
+
+const SearchStudentsFromDatabase = async (query) => {
+	let result;
+	result = StudentModel.find({
+		$or: [
+			{ Name: new RegExp(query, "i") },
+			{ RollNo: new RegExp(query, "i") },
+			{ Batch: new RegExp(query, "i") },
+		],
+	});
+	return result;
+};
+
+module.exports = { RoleAuthentication,GetStudentsFromDatabase, SearchStudentsFromDatabase };
+
