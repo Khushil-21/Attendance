@@ -9,9 +9,13 @@ import { TeacherDashboard } from "./Webpages/TeacherDashboard";
 import { OverallAttendance } from "./Webpages/OverallAttendance";
 import { Navbar } from "./Components/Navbar";
 import { Footer } from "./Components/Footer";
-import { Background } from "./Components/Background";
+import { DailyAttendance } from "./Webpages/DailyAttendance";
 
 function App() {
+
+	const Authenticated = localStorage.getItem("Authenticated")
+	console.log(Authenticated)
+
 	return (
 		<div className="App">
 			<Router>
@@ -20,11 +24,15 @@ function App() {
 					<Route path="" element={<Home />}>
 					</Route>
 					<Route path="Admin" element={<Admin />}></Route>
-					<Route path="Teacher" element={<Teacher />}></Route>
-					<Route path="Student" element={<Student />}></Route>
 					<Route path="AdminDashboard" element={<AdminDashboard />}></Route>
+
+					<Route path="Teacher" element={<Teacher />}></Route>
 					<Route path="TeacherDashboard" element={<TeacherDashboard />}></Route>
+
+					<Route path="Student" element={<Student />}></Route>
+
 					<Route path="Overall-Attendance" element={<OverallAttendance />}></Route>
+					<Route path="Daily-Attendance" element={<DailyAttendance />}></Route>
 				</Routes>
 				<Footer/>
 			</Router>

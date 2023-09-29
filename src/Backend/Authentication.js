@@ -4,6 +4,7 @@ const cors = require("cors");
 // const GetStudentList = require("./StudentList");
 const AbsentWriter = require("./AbsentMarker");
 const { RoleAuthentication, GetStudentsFromDatabase, SearchStudentsFromDatabase } = require("../Database/DatabaseConnection");
+const ReadDailyFile = require("./DailyAbsentFileReader");
 
 app.use(express.json());
 app.use(cors());
@@ -11,9 +12,9 @@ const port = 5001
 
 
 app.post("/RoleAuthentication", async(req, res) => {
-	console.log(req.body.username);
-	console.log(req.body.password);
-	console.log(req.body.role);
+	// console.log(req.body.username);
+	// console.log(req.body.password);
+	// console.log(req.body.role);
 	let AuthenticationStatus = "";
 	const Credentials = await RoleAuthentication(req.body.username, req.body.password, req.body.role)
 
@@ -23,7 +24,7 @@ app.post("/RoleAuthentication", async(req, res) => {
 	} else {
 		AuthenticationStatus = "Successful";
 	}
-	console.log(AuthenticationStatus);
+	// console.log(AuthenticationStatus);
 	res.json({ AuthenticationStatus });
 });
 
@@ -32,7 +33,7 @@ app.post("/GetStudents", async(req, res) => {
 	// const students = GetStudentList(batch)
 	const students = await GetStudentsFromDatabase(batch)
 	// console.log(students)
-	console.log(batch)
+	// console.log(batch)
 	res.json({ students });
 });
 
@@ -47,6 +48,12 @@ app.post("/SearchStudents", async(req, res) => {
 app.post("/Attendance", async (req, res) => {
 	// console.log(req.body)
 	AbsentWriter(req.body);
+});
+app.post("/Studentportal", async (req, res) => {
+	console.log(req.body)
+	const DailyAttendance = await ReadDailyFile()
+	// console.log(DailyAttendance)
+	res.json({DailyAttendance})
 });
 
 app.listen(port, () => {

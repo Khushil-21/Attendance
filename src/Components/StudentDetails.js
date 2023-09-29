@@ -121,13 +121,12 @@ export const StudentDetails = () => {
 			);
 		} else {
 			setAbsenties([...absenties, e.target.value]);
-			
 		}
 	};
 	const clickHandler = async (e) => {
 		console.log(e.target.name);
 		// console.log(roll);
-		
+
 		await axios
 			.post("http://localhost:5001/Attendance", {
 				absenties,
@@ -245,10 +244,12 @@ export const StudentDetails = () => {
 							<EyeIcon />
 						</button>
 					</Link>
-					<button className="daily" name="daily" >
-						Daily
-						<DailyIcon />
-					</button>
+					<Link to="/Daily-Attendance">
+						<button className="daily" name="daily">
+							Daily
+							<DailyIcon />
+						</button>
+					</Link>
 				</div>
 			</div>
 			<div className="students">

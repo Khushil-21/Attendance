@@ -13,7 +13,7 @@ export const Home = () => {
 			<Preloader/>
 			{/* <Navbar /> */}
 			<Background />
-			<div className="container-fluid section-1">
+			<div className="container-flui section-1">
 				<div className="mainsection">
 					<p className="heading1">
 						{/* <span class="letter-1">W</span>ant to

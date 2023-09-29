@@ -105,7 +105,7 @@ body {
 	align-items: center;
 }
 .section-1 {
-	/* border: 2px solid black; */
+	/* border: 2px solid rgb(229, 4, 4); */
 	height: 65vh;
 	width: 100vw;
 	display: flex;
@@ -144,8 +144,8 @@ body {
 }
 .calculator-icon {
 	fill: var(--secondary);
-	width: 30px;
-	height: 30px;
+	/* width: 30px;
+	height: 30px; */
 	margin-left: 5px;
 	margin-bottom: 5px;
 }
@@ -211,7 +211,7 @@ body {
 /*! ---------------- Admin page Starting ------- */
 .section-2 {
 	/* border: 2px solid rgb(226, 67, 67); */
-	height: 67.4vh;
+	height: 64vh;
 	width: 100vw;
 	display: flex;
 	justify-content: center;
@@ -766,6 +766,71 @@ td span {
 
 
 
+.daily-container{
+	/* border: 3px solid red ; */
+	min-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.Day{
+
+	font-size: 70px;
+}
+.daily-attendance{
+	height: 60vh;
+}
+.daily-attendance th{
+	background-color: var(--dark);
+	color: white;
+}
+.yes{
+	color: var(--dark);
+	background-color: var(--secondary);
+	font-size: 20px;
+	font-weight: 700;
+}
+.no{
+	color: var(--dark);
+	background-color: var(--primary);
+	font-size: 20px;
+	font-weight: 700;
+}
+.yes:hover{
+	color: var(--dark);
+	background-color: var(--secondary);
+}
+.no:hover{
+	color: var(--dark);
+	background-color: var(--primary);
+}
+.daily-attendance th{
+	font-weight: 700;
+	cursor: default;
+	/* border: 1px solid var(--pure) ; */
+}
+.side{
+	padding-left:20px;
+	padding-right:20px;
+}
+.up{
+	padding-top:30px;
+	padding-bottom:30px;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -900,7 +965,7 @@ td span {
 		height: 60vh;
 	}
 	.section-1 {
-		height: 67vh;
+		height: 64vh;
 		width: 100vw;
 	}
 	.login-button {
@@ -924,9 +989,7 @@ td span {
 		height: 7vh;
 		font-size: 20px;
 	}
-	.section-1 {
-		height: 67.4vh;
-	}
+
 }
 @media only screen and (min-height: 1000px) and (min-width: 760px) {
 	.section-1 {

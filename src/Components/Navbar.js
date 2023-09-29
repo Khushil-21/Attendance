@@ -15,7 +15,7 @@ export const Navbar = () => {
 				<div className="container-fluid ">
 					<Link className="navbar-brand" to="/">
 						Attendance
-						<CalculatorIcon/>
+						<CalculatorIcon width="35px" height="35px"/>
 					</Link>
 					<button
 						className="navbar-toggler"
@@ -39,11 +39,7 @@ export const Navbar = () => {
 									Home
 								</Link>
 							</li>
-							<li className="nav-item">
-								<Link className="nav-link" aria-current="page" onClick={() => { navigate(-1) }}>
-									Go Back
-								</Link>
-							</li>
+							
 							
 						</ul>
 					</div>

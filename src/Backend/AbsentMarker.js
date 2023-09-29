@@ -1,4 +1,3 @@
-const fs = require("fs");
 var path = require("path");
 const { MarkAttendanceToDB } = require("../Database/DatabaseConnection");
 path = path.join(__dirname, "./DataFiles/StudentsStatus.csv");
@@ -13,7 +12,9 @@ const AbsentWriter = async(alldata) => {
 			}
 		}
 		absenties = temp;
-    }
+	}
+	
+	
     // console.log("-------ab")
 	// console.log(absenties);
     // console.log("-------sel")

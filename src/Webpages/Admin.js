@@ -8,6 +8,7 @@ import { Preloader } from "../Components/Preloader";
 import axios from "axios";
 
 export const Admin = () => {
+
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
 
