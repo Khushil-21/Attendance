@@ -13,7 +13,7 @@ import { DailyAttendance } from "./Webpages/DailyAttendance";
 import { useState } from "react";
 
 function App() {
-	console.log(sessionStorage.getItem("Auth"))
+
 	return (
 		<div className="App">
 			<Router>

@@ -74,6 +74,7 @@ export const OverallAttendance = () => {
 							role="button"
 							data-bs-toggle="dropdown"
 							aria-expanded="false"
+							disabled
 						>
 							Filter Button
 						</a>
@@ -90,15 +91,15 @@ export const OverallAttendance = () => {
 				<div>
 					<div className="inter-info">
 						<div className="box Red">Red</div>
-						<div className="info-text">Below 75%</div>
+						<div className="info-text">Below 50%</div>
 					</div>
 					<div className="inter-info">
 						<div className="box yellow">Yellow</div>
-						<div className="info-text">Below 75%</div>
+						<div className="info-text">Above 50% Below 85%</div>
 					</div>
 					<div className="inter-info">
 						<div className="box green">Green</div>
-						<div className="info-text">Below 75%</div>
+						<div className="info-text">Above 90%</div>
 					</div>
 				</div>
 			</div>
@@ -143,7 +144,7 @@ export const OverallAttendance = () => {
 										className={
 											(student.FSD / FSD_Total) * 100 >= 90
 												? "above"
-												: (student.FSD / FSD_Total) * 100 <= 75
+												: (student.FSD / FSD_Total) * 100 <= 50
 												? "below"
 												: "medium"
 										}
@@ -154,7 +155,7 @@ export const OverallAttendance = () => {
 										className={
 											(student.PYTHON / PYTHON_Total) * 100 >= 90
 												? "above"
-												: (student.PYTHON / PYTHON_Total) * 100 <= 75
+												: (student.PYTHON / PYTHON_Total) * 100 <= 50
 												? "below"
 												: "medium"
 										}
@@ -165,7 +166,7 @@ export const OverallAttendance = () => {
 										className={
 											(student.COA / COA_Total) * 100 >= 90
 												? "above"
-												: (student.COA / COA_Total) * 100 <= 75
+												: (student.COA / COA_Total) * 100 <= 50
 												? "below"
 												: "medium"
 										}
@@ -176,7 +177,7 @@ export const OverallAttendance = () => {
 										className={
 											(student.DM / DM_Total) * 100 >= 90
 												? "above"
-												: (student.DM / DM_Total) * 100 <= 75
+												: (student.DM / DM_Total) * 100 <= 50
 												? "below"
 												: "medium"
 										}
@@ -185,9 +186,15 @@ export const OverallAttendance = () => {
 									</td>
 									<td
 										className={
-											(student.FSD / FSD_Total) * 100 >= 90
+											(
+												((student.DM / DM_Total) * 100 +
+													(student.FSD / FSD_Total) * 100 +
+													(student.COA / COA_Total) * 100 +
+													(student.PYTHON / PYTHON_Total) * 100) /
+												4
+											).toFixed(2) >= 90
 												? "above"
-												: (student.FSD / FSD_Total) * 100 <= 75
+												: (student.FSD / FSD_Total) * 100 <= 50
 												? "below"
 												: "medium"
 										}

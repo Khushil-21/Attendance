@@ -44,7 +44,7 @@ const MarkAttendanceToDB = async (absentData, SelectedData) => {
 	// console.log(subject);
 	// console.log(absentData);
 	for (let i of absentData) {
-		console.log(i);
+		// console.log(i);
 		const c = await StudentModel.findOne({ RollNo: `${i}` });
 		// console.log(c[subject]);
 		if (c[subject] > 0) {
@@ -53,7 +53,7 @@ const MarkAttendanceToDB = async (absentData, SelectedData) => {
 				{ $inc: { [subject]: -1 } }
 			);
 		}
-		console.log("---------------------------------");
+		// console.log("---------------------------------");
 	}
 
 	var path = require("path");
@@ -64,9 +64,14 @@ const MarkAttendanceToDB = async (absentData, SelectedData) => {
 	WriteDailyFile(absentData, SelectedData);
 };
 
+const OneStudentFromDB = async (query) => {
+	return await StudentModel.findOne({ EnrollNo: query });
+};
+
 module.exports = {
 	RoleAuthentication,
 	GetStudentsFromDatabase,
 	SearchStudentsFromDatabase,
 	MarkAttendanceToDB,
+	OneStudentFromDB,
 };

@@ -2,8 +2,8 @@ var path = require("path");
 var fs = require("fs");
 path = path.join(__dirname, "/WrittenFiles/DailyAttendance.Json");
 const WriteDailyFile = (absentData, SelectedData) => {
-	console.log(absentData);
-    console.log(SelectedData);
+	// console.log(absentData);
+    // console.log(SelectedData);
     let data = JSON.parse(fs.readFileSync(path, "utf-8"))
     // console.log(data);
     if (data["Day"] !== SelectedData.Day) {
@@ -11,7 +11,7 @@ const WriteDailyFile = (absentData, SelectedData) => {
     }
     data["Day"]=SelectedData.Day
     data[SelectedData.Lecture][SelectedData.Batch]=[...absentData]
-    console.log(data)
+    // console.log(data)
 
     fs.writeFileSync(path, JSON.stringify(data))
 

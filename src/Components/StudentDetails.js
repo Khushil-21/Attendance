@@ -124,7 +124,7 @@ export const StudentDetails = () => {
 		}
 	};
 	const clickHandler = async (e) => {
-		console.log(e.target.name);
+		// console.log(e.target.name);
 		// console.log(roll);
 
 		await axios

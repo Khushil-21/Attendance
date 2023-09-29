@@ -7,7 +7,7 @@ export const Preloader = () => {
 		setLoading(true);
 		setTimeout(() => {
 			setLoading(false);
-		},0);
+		},1700);
 	}, []);
 	return (
 		<div>

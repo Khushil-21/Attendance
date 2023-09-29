@@ -20,9 +20,10 @@ export const DailyAttendance = () => {
 			setData({ ...response.data.DailyAttendance });
 		});
 	}, []);
-	return (
+	return (<>
+			<Preloader/>
 		<div className="daily-container">
-      {<h1 className="Day">{Daily.Day.slice(0, -3).toUpperCase()}<span className="letter-1">{Daily.Day.slice(-3).toUpperCase()}</span></h1>}
+      {<h1 className="Day">{Daily.Day.slice(0, -3).toUpperCase()}<span className="letter-1">{Daily.Day.slice(-3).toUpperCase()}</span> Absenties</h1>}
 			<br></br>
 			{
 				<table  border="1" cellSpacing="0px" className="daily-attendance">
@@ -63,7 +64,7 @@ export const DailyAttendance = () => {
 					</tr>
 				</table>
 			}
-		</div>
+		</div></>
 	);
 };
 

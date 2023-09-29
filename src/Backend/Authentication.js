@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 // const GetStudentList = require("./StudentList");
 const AbsentWriter = require("./AbsentMarker");
-const { RoleAuthentication, GetStudentsFromDatabase, SearchStudentsFromDatabase } = require("../Database/DatabaseConnection");
+const { RoleAuthentication, GetStudentsFromDatabase, SearchStudentsFromDatabase, OneStudentFromDB } = require("../Database/DatabaseConnection");
 const ReadDailyFile = require("./DailyAbsentFileReader");
 
 app.use(express.json());
@@ -39,9 +39,9 @@ app.post("/GetStudents", async(req, res) => {
 
 app.post("/SearchStudents", async(req, res) => {
 	const query = req.body.searchQuery
-	console.log(query)
+	// console.log(query)
 	const students = await SearchStudentsFromDatabase(query)
-	console.log(students)
+	// console.log(students)
 	res.json({ students });
 });
 
@@ -50,10 +50,15 @@ app.post("/Attendance", async (req, res) => {
 	AbsentWriter(req.body);
 });
 app.post("/Studentportal", async (req, res) => {
-	console.log(req.body)
+	// console.log(req.body)
 	const DailyAttendance = await ReadDailyFile()
 	// console.log(DailyAttendance)
 	res.json({DailyAttendance})
+});
+app.post("/GetOneStudent", async (req, res) => {
+	const query = req.body.query
+	const OneStudent = await OneStudentFromDB(query)
+	res.json({OneStudent})
 });
 
 app.listen(port, () => {

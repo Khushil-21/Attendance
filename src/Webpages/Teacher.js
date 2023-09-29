@@ -19,7 +19,7 @@ export const Teacher = () => {
 		await axios
 			.post("http://localhost:5001/RoleAuthentication", { username, password, role: "TEACHER" })
 			.then((response) => {
-				console.log(response)
+				// console.log(response)
 				if (response.data.AuthenticationStatus === "Successful") {
 					navigate("/TeacherDashboard");
 				} else {
@@ -29,7 +29,7 @@ export const Teacher = () => {
 	};
 	return (
 		<div>	
-			{/* <Preloader/> */}
+			<Preloader/>
 			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-2">
