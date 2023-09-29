@@ -10,12 +10,10 @@ import { OverallAttendance } from "./Webpages/OverallAttendance";
 import { Navbar } from "./Components/Navbar";
 import { Footer } from "./Components/Footer";
 import { DailyAttendance } from "./Webpages/DailyAttendance";
+import { useState } from "react";
 
 function App() {
-
-	const Authenticated = localStorage.getItem("Authenticated")
-	console.log(Authenticated)
-
+	console.log(sessionStorage.getItem("Auth"))
 	return (
 		<div className="App">
 			<Router>
@@ -24,7 +22,7 @@ function App() {
 					<Route path="" element={<Home />}>
 					</Route>
 					<Route path="Admin" element={<Admin />}></Route>
-					<Route path="AdminDashboard" element={<AdminDashboard />}></Route>
+					<Route path="AdminDashboard" element={ <AdminDashboard />}></Route>
 
 					<Route path="Teacher" element={<Teacher />}></Route>
 					<Route path="TeacherDashboard" element={<TeacherDashboard />}></Route>

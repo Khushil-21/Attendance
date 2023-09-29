@@ -49,6 +49,7 @@ export const OverallAttendance = () => {
 		<div>
 			<Preloader />
 			{/* <Navbar /> */}
+
 			<div>
 				<br></br>
 				<h1 align="center">Overall Attendance</h1>
@@ -81,6 +82,23 @@ export const OverallAttendance = () => {
 							<li className="dropdown-item">Attendance Above 75%</li>
 							<li className="dropdown-item">Attendance Below 75%</li>
 						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div className="info">
+				<div>
+					<div className="inter-info">
+						<div className="box Red">Red</div>
+						<div className="info-text">Below 75%</div>
+					</div>
+					<div className="inter-info">
+						<div className="box yellow">Yellow</div>
+						<div className="info-text">Below 75%</div>
+					</div>
+					<div className="inter-info">
+						<div className="box green">Green</div>
+						<div className="info-text">Below 75%</div>
 					</div>
 				</div>
 			</div>

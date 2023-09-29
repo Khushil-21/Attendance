@@ -11,7 +11,6 @@ export const Admin = () => {
 
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
-
 	const navigate = useNavigate();
 
 	const ChangeHandler = (e) => {
