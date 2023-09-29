@@ -142,7 +142,7 @@ export const OverallAttendance = () => {
 									<td>{student.DM}</td>
 									<td
 										className={
-											(student.FSD / FSD_Total) * 100 >= 90
+											(student.FSD / FSD_Total) * 100 >= 85
 												? "above"
 												: (student.FSD / FSD_Total) * 100 <= 50
 												? "below"
@@ -153,7 +153,7 @@ export const OverallAttendance = () => {
 									</td>
 									<td
 										className={
-											(student.PYTHON / PYTHON_Total) * 100 >= 90
+											(student.PYTHON / PYTHON_Total) * 100 >= 85
 												? "above"
 												: (student.PYTHON / PYTHON_Total) * 100 <= 50
 												? "below"
@@ -164,7 +164,7 @@ export const OverallAttendance = () => {
 									</td>
 									<td
 										className={
-											(student.COA / COA_Total) * 100 >= 90
+											(student.COA / COA_Total) * 100 >= 85
 												? "above"
 												: (student.COA / COA_Total) * 100 <= 50
 												? "below"
@@ -175,7 +175,7 @@ export const OverallAttendance = () => {
 									</td>
 									<td
 										className={
-											(student.DM / DM_Total) * 100 >= 90
+											(student.DM / DM_Total) * 100 >= 85
 												? "above"
 												: (student.DM / DM_Total) * 100 <= 50
 												? "below"
