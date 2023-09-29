@@ -1,6 +1,5 @@
-const mg = require("mongoose");
-const { RoleModel, StudentModel } = require("./MySchemas");
-
+const { RoleModel, StudentModel, TimeTableModel } = require("./MySchemas");
+const fs = require("fs");
 
 const RoleAuthentication = async (username, password, role) => {
 	let result;
@@ -8,7 +7,6 @@ const RoleAuthentication = async (username, password, role) => {
 	console.log(result);
 	return result;
 };
-
 
 const GetStudentsFromDatabase = async (batch) => {
 	let result;
@@ -19,7 +17,6 @@ const GetStudentsFromDatabase = async (batch) => {
 	}
 	return result;
 };
-
 
 const SearchStudentsFromDatabase = async (query) => {
 	let result;
@@ -33,5 +30,32 @@ const SearchStudentsFromDatabase = async (query) => {
 	return result;
 };
 
-module.exports = { RoleAuthentication,GetStudentsFromDatabase, SearchStudentsFromDatabase };
+const MarkAttendanceToDB = async (absent, subjectdetails) => {
+	console.log(absent);
+	console.log(subjectdetails);
+	const { Lecture, Day, Batch } = subjectdetails;
+	let subject = await TimeTableModel.findOne({ Batch: Batch });
+	subject = subject[Lecture][0][Day];
+	console.log(subject);
+	console.log(absent);
+	for (let i of absent) {
+		console.log(i);
+		const c = await StudentModel.findOne({ RollNo: `${i}` });
+		// console.log(c[subject]);
+		if (c[subject] > 0) {
+			await StudentModel.updateOne({ RollNo: `${i}` },{$inc:{[subject]:-1}})
+		}
+		console.log("---------------------------------");
+	}
+	var path = require("path");
+	path = path.join(__dirname, "/DataFiles/StudentsDetails.json");
+	const data = await StudentModel.find({},{_id:0,__v:0})
+	fs.writeFileSync(path,JSON.stringify(data))
+};
 
+module.exports = {
+	RoleAuthentication,
+	GetStudentsFromDatabase,
+	SearchStudentsFromDatabase,
+	MarkAttendanceToDB,
+};

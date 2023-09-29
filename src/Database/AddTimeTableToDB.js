@@ -8,11 +8,10 @@ path = path.join(__dirname, "/DataFiles/TimeTable.json");
 
 
 const AddStudentsToDB = async () => {
-	const data = fs.readFileSync(path, "utf-8");
+	const data = fs.readFileSync(path);
 	const timetable = JSON.parse(data);
+	console.log(timetable)
 	await TimeTableModel.deleteMany({})
 	await TimeTableModel.insertMany(timetable);
-	// console.log(result)
 };
 AddStudentsToDB();
- 

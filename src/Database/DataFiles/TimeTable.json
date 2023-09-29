@@ -1,23 +1,107 @@
 [
 	{
 		"Batch": "Batch-1",
-		"Lecture-1": ["FSD", "PYTHON", "COA", "DM"],
-		"Lecture-2": ["PYTHON", "PYTHON", "COA", "FSD"],
-		"Lecture-3": ["DM", "PYTHON", "PYTHON", "COA"],
-		"Lecture-4": ["DM", "FSD", "FSD", "PYTHON"]
+		"Lecture-1": {
+			"Monday": "FSD",
+			"Tuesday": "PYTHON",
+			"Wednesday": "COA",
+			"Thrusday": "DM",
+			"Firday": "COA",
+			"Saturday": "PYTHON"
+		},
+		"Lecture-2": {
+			"Monday": "PYTHON",
+			"Tuesday": "PYTHON",
+			"Wednesday": "COA",
+			"Thrusday": "FSD",
+			"Firday": "FSD",
+			"Saturday": "PYTHON"
+		},
+		"Lecture-3": {
+			"Monday": "DM",
+			"Tuesday": "PYTHON",
+			"Wednesday": "PYTHON",
+			"Thrusday": "COA",
+			"Firday": "FSD",
+			"Saturday": "COA"
+		},
+		"Lecture-4": {
+			"Monday": "DM",
+			"Tuesday": "FSD",
+			"Wednesday": "FSD",
+			"Thrusday": "PYTHON",
+			"Firday": "FSD",
+			"Saturday": "PYTHON"
+		}
 	},
 	{
 		"Batch": "Batch-2",
-		"Lecture-1": ["FSD", "PYTHON", "COA", "DM"],
-		"Lecture-2": ["PYTHON", "PYTHON", "COA", "FSD"],
-		"Lecture-3": ["DM", "PYTHON", "PYTHON", "COA"],
-		"Lecture-4": ["DM", "FSD", "FSD", "PYTHON"]
+		"Lecture-1": {
+			"Monday": "FSD",
+			"Tuesday": "PYTHON",
+			"Wednesday": "COA",
+			"Thrusday": "DM",
+			"Firday": "COA",
+			"Saturday": "PYTHON"
+		},
+		"Lecture-2": {
+			"Monday": "PYTHON",
+			"Tuesday": "PYTHON",
+			"Wednesday": "COA",
+			"Thrusday": "FSD",
+			"Firday": "FSD",
+			"Saturday": "PYTHON"
+		},
+		"Lecture-3": {
+			"Monday": "DM",
+			"Tuesday": "PYTHON",
+			"Wednesday": "PYTHON",
+			"Thrusday": "COA",
+			"Firday": "FSD",
+			"Saturday": "COA"
+		},
+		"Lecture-4": {
+			"Monday": "DM",
+			"Tuesday": "FSD",
+			"Wednesday": "FSD",
+			"Thrusday": "PYTHON",
+			"Firday": "FSD",
+			"Saturday": "PYTHON"
+		}
 	},
 	{
 		"Batch": "Batch-3",
-		"Lecture-1": ["FSD", "PYTHON", "COA", "DM"],
-		"Lecture-2": ["PYTHON", "PYTHON", "COA", "FSD"],
-		"Lecture-3": ["DM", "PYTHON", "PYTHON", "COA"],
-		"Lecture-4": ["DM", "FSD", "FSD", "PYTHON"]
+		"Lecture-1": {
+			"Monday": "FSD",
+			"Tuesday": "PYTHON",
+			"Wednesday": "COA",
+			"Thrusday": "DM",
+			"Firday": "COA",
+			"Saturday": "PYTHON"
+		},
+		"Lecture-2": {
+			"Monday": "PYTHON",
+			"Tuesday": "PYTHON",
+			"Wednesday": "COA",
+			"Thrusday": "FSD",
+			"Firday": "FSD",
+			"Saturday": "PYTHON"
+		},
+		"Lecture-3": {
+			"Monday": "DM",
+			"Tuesday": "PYTHON",
+			"Wednesday": "PYTHON",
+			"Thrusday": "COA",
+			"Firday": "FSD",
+			"Saturday": "COA"
+		},
+		"Lecture-4": {
+			"Monday": "DM",
+			"Tuesday": "FSD",
+			"Wednesday": "FSD",
+			"Thrusday": "PYTHON",
+			"Firday": "FSD",
+			"Saturday": "PYTHON"
+		}
 	}
 ]

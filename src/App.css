@@ -9,9 +9,9 @@
 	--pure: white;
 	--blur: rgba(200, 237, 251, 0.577);
 }
-*::selection {
+/* *::selection {
 	background-color: rebeccapurple;
-}
+} */
 ::-webkit-scrollbar {
 	width: 15px;
 	display: none;
@@ -175,6 +175,7 @@ body {
 /*! ----------------- Main Ending -----------------*/
 /*! Footer Starting */
 .footer {
+	margin-top: 20px;
 	background-color: var(--dark);
 	height: 16vh;
 	/* border: 3px red solid; */
@@ -413,13 +414,27 @@ th {
 	/* height: 65vh; */
 	width: 45vw;
 }
-
+.see-attendance{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 30vw;
+}
+.attendance-container{
+	/* border: 3px solid; */
+	margin-top: 20px;
+	/* margin-bottom: 10px; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* width: 35vw; */
+}
 .actions {
 	/* border: 2px solid rgb(63, 153, 51); */
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	width: 60vw;
+	width: 45vw;
 }
 .student-list {
 	width: 100vw;
@@ -663,6 +678,7 @@ td span {
 .overall-data{
 	margin-bottom: 40px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;	
 	/* border: 3px solid green; */
@@ -672,7 +688,7 @@ td span {
 	transition: height 2s ease-in-out;
 	user-select: none;
 	border: 2px solid var(--dark);
-	width: 94vw;
+	width: 97vw;
 	background-color: var(--primary);
 }
 .table-heading{

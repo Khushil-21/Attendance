@@ -121,15 +121,16 @@ export const StudentDetails = () => {
 			);
 		} else {
 			setAbsenties([...absenties, e.target.value]);
+			
 		}
 	};
 	const clickHandler = async (e) => {
 		console.log(e.target.name);
 		// console.log(roll);
-		axios
+		
+		await axios
 			.post("http://localhost:5001/Attendance", {
 				absenties,
-				StudentDetails,
 				operation: e.target.name,
 				roll,
 				SelectedData,
@@ -236,9 +237,22 @@ export const StudentDetails = () => {
 					></input>
 				</div>
 			</div>
-
+			<div className="attendance-container">
+				<div className="see-attendance">
+					<Link to="/Overall-Attendance">
+						<button className="overall" name="overall">
+							OverAll
+							<EyeIcon />
+						</button>
+					</Link>
+					<button className="daily" name="daily" >
+						Daily
+						<DailyIcon />
+					</button>
+				</div>
+			</div>
 			<div className="students">
-				<h6 align="center">{JSON.stringify(SelectedData)}</h6>
+				{/* <h6 align="center">{JSON.stringify(SelectedData)}</h6> */}
 				{/* <h6 align="center">{JSON.stringify(StudentDetails)}</h6> */}
 
 				<div className="student-list hide">
@@ -292,16 +306,6 @@ export const StudentDetails = () => {
 						<button className="present" name="present" onClick={clickHandler}>
 							Present
 							<PresentIcon />
-						</button>
-						<Link to="/Overall-Attendance">
-							<button className="overall" name="overall">
-								OverAll
-								<EyeIcon />
-							</button>
-						</Link>
-						<button className="daily" name="daily" onClick={clickHandler}>
-							Daily
-							<DailyIcon />
 						</button>
 						<a
 							href={file}

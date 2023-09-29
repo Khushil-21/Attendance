@@ -7,38 +7,43 @@ import axios from "axios";
 import { BugIcon } from "../Icons/BugIcon";
 
 export const OverallAttendance = () => {
-  const [displaystudents, SetDisplayStudents] = useState([]);
+	const [displaystudents, SetDisplayStudents] = useState([]);
 
 	const FSD_Total = 100;
 	const PYTHON_Total = 100;
 	const COA_Total = 100;
 	const DM_Total = 100;
+	useEffect(() => {
+		var ignore = false;
 
-  useEffect(() => {
-    window.scrollTo(0, 	0)
+		window.scroll(0, 0);
 		axios
 			.post("http://localhost:5001/GetStudents", { batch: "All" })
 			.then((response) => {
 				// console.log(response.data.students)
-				SetDisplayStudents(response.data.students);
+				if (!ignore) {
+					SetDisplayStudents(response.data.students);
+				}
 			});
-  }, []);
-  
-  const seacrhHandler = async(e) => {
-    await axios
-			.post("http://localhost:5001/SearchStudents", { searchQuery: e.target.value.trimEnd() })
+		return () => {
+			ignore = true;
+		};
+	}, []);
+
+	const seacrhHandler = async (e) => {
+		await axios
+			.post("http://localhost:5001/SearchStudents", {
+				searchQuery: e.target.value.trimEnd(),
+			})
 			.then((response) => {
-        // console.log(response.data.students[0])
-        if (response.data.students === undefined) {
-          
-          SetDisplayStudents([]);
-        } else {
-          SetDisplayStudents(response.data.students);
-          
-        }
+				// console.log(response.data.students[0])
+				if (response.data.students === undefined) {
+					SetDisplayStudents([]);
+				} else {
+					SetDisplayStudents(response.data.students);
+				}
 			});
-  }
-  
+	};
 
 	return (
 		<div>
@@ -51,7 +56,13 @@ export const OverallAttendance = () => {
 					<label for="search">Search</label>
 
 					<div className="e">
-						<input id="search" type="search" maxLength="100"  required onChange={seacrhHandler} />
+						<input
+							id="search"
+							type="search"
+							maxLength="100"
+							required
+							onChange={seacrhHandler}
+						/>
 						<span className="caret"></span>
 					</div>
 
@@ -77,7 +88,7 @@ export const OverallAttendance = () => {
 			<div className="overall-data">
 				{/* {JSON.stringify(displaystudents)} */}
 
-				{displaystudents.length!==0 && (
+				{displaystudents.length !== 0 && (
 					<table border="1" cellSpacing="0px" className="all-attendance">
 						<tr className="table-heading">
 							<th rowSpan="2">Roll-NO</th>
@@ -119,7 +130,7 @@ export const OverallAttendance = () => {
 												: "medium"
 										}
 									>
-										{(student.FSD / FSD_Total) * 100}%
+										{((student.FSD / FSD_Total) * 100).toFixed(1)}%
 									</td>
 									<td
 										className={
@@ -130,7 +141,7 @@ export const OverallAttendance = () => {
 												: "medium"
 										}
 									>
-										{(student.PYTHON / PYTHON_Total) * 100}%
+										{((student.PYTHON / PYTHON_Total) * 100).toFixed(1)}%
 									</td>
 									<td
 										className={
@@ -141,7 +152,7 @@ export const OverallAttendance = () => {
 												: "medium"
 										}
 									>
-										{(student.COA / COA_Total) * 100}%
+										{((student.COA / COA_Total) * 100).toFixed(1)}%
 									</td>
 									<td
 										className={
@@ -152,7 +163,7 @@ export const OverallAttendance = () => {
 												: "medium"
 										}
 									>
-										{(student.DM / DM_Total) * 100}%
+										{((student.DM / DM_Total) * 100).toFixed(1)}%
 									</td>
 									<td
 										className={
@@ -163,14 +174,25 @@ export const OverallAttendance = () => {
 												: "medium"
 										}
 									>
-										{(((student.DM / DM_Total) * 100 + (student.FSD / FSD_Total) * 100 + (student.COA / COA_Total) * 100 +(student.PYTHON / PYTHON_Total) * 100  ) /4).toFixed(2)}%
+										{(
+											((student.DM / DM_Total) * 100 +
+												(student.FSD / FSD_Total) * 100 +
+												(student.COA / COA_Total) * 100 +
+												(student.PYTHON / PYTHON_Total) * 100) /
+											4
+										).toFixed(2)}
+										%
 									</td>
-									<td className="report"> <BugIcon/> Report a Bug</td>
+									<td className="report">
+										{" "}
+										<BugIcon /> Report
+									</td>
 								</tr>
 							);
 						})}
 					</table>
 				)}
+				{displaystudents.length === 0 && <h1>No Data Found</h1>}
 			</div>
 
 			{/* <Footer /> */}
