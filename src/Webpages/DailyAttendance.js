@@ -6,6 +6,7 @@ import CalculatorIcon from "../Icons/CalculatorIcon";
 export const DailyAttendance = () => {
 	const [Daily, setData] = useState({
 		Day: "",
+		Date:"",
 		"Lecture-1": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
 		"Lecture-2": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
 		"Lecture-3": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },

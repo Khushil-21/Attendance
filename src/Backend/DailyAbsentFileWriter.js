@@ -2,24 +2,31 @@ var path = require("path");
 var fs = require("fs");
 path = path.join(__dirname, "/WrittenFiles/DailyAttendance.Json");
 const WriteDailyFile = (absentData, SelectedData) => {
+	console.log("-----------file ")
+
 	// console.log(absentData);
     // console.log(SelectedData);
     let data = JSON.parse(fs.readFileSync(path, "utf-8"))
     // console.log(data);
-    if (data["Day"] !== SelectedData.Day) {
+    
+    if (data["Date"] !== SelectedData.Date) {
         data = restFile()
     }
     data["Day"]=SelectedData.Day
+    data["Date"]=SelectedData.Date
     data[SelectedData.Lecture][SelectedData.Batch]=[...absentData]
     // console.log(data)
 
     fs.writeFileSync(path, JSON.stringify(data))
+	console.log("-----------file puru")
+
 
 };
 
 function restFile() {
     return {
-		Day: "",
+        Day: "",
+        Date:"",
 		"Lecture-1": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
 		"Lecture-2": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
 		"Lecture-3": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },

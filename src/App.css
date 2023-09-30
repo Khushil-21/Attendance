@@ -897,10 +897,10 @@ td span {
 	/* border: solid 0.3em #e40d0d; */
 	margin-left: 50px;
 }
-.h{
+.h {
 	font-size: 55px !important;
 }
-.name{
+.name {
 	/* border: solid 0.3em #e40d0d; */
 	width: 10vw;
 	height: 10vh;
@@ -990,54 +990,37 @@ td span {
 	transition: transform 150ms ease-out, opacity 150ms ease-out;
 }
 
-.student-section{
+.student-section {
 	/* border: 3px solid; */
 	min-height: 52.5vh;
 	max-height: 95vh;
 	display: flex;
 	flex-direction: column;
-	justify-content:space-evenly;
+	justify-content: space-evenly;
 	align-items: center;
 }
-.student-section>div{
+.student-section > div {
 	/* border: 2px solid; */
 }
-.studentdata{
+.studentdata {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 5vh;
 	/* border: 2px solid; */
 }
-.er{
+.er {
 	color: red;
 	font-weight: 700;
 }
-.answer{
+.answer {
 	color: var(--secondary);
 	font-weight: 700;
 }
-.question{
+.question {
 	color: var(--dark);
 	font-weight: 700;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*             >=278          */
 @media only screen and (min-width: 279px) {
@@ -1415,13 +1398,6 @@ td span {
 	}
 }
 
-
-
-
-
-
-
-
 #preloader {
 	top: 0;
 	bottom: 0;
@@ -1762,15 +1738,7 @@ label {
 	}
 }
 
-
-
-
-
-
-
-
-
-.searchbutton{
+.searchbutton {
 	/* border: 3px solid; */
 	height: 10vh;
 	width: 15vw;
@@ -1785,14 +1753,14 @@ label {
 	/* --secondary: #ff135a; */
 	--color-outline: #2600ff80;
 	--color-shadow: #00000080;
-  }
-  
-  .btn-content {
+}
+
+.btn-content {
 	display: flex;
 	align-items: center;
 	padding: 5px 30px;
 	text-decoration: none;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 	font-weight: 600;
 	font-size: 30px;
 	color: var(--color-text);
@@ -1800,86 +1768,113 @@ label {
 	transition: 1s;
 	border-radius: 100px;
 	box-shadow: 0 0 0.2em 0 var(--secondary);
-  }
-  
-  .btn-content:hover, .btn-content:focus {
+}
+
+.btn-content:hover,
+.btn-content:focus {
 	transition: 0.5s;
 	-webkit-animation: btn-content 1s;
 	animation: btn-content 1s;
 	outline: 0.1em solid transparent;
 	outline-offset: 0.2em;
 	box-shadow: 0 0 0.4em 0 var(--secondary);
-  }
-  
-  .btn-content .icon-arrow {
+}
+
+.btn-content .icon-arrow {
 	transition: 0.5s;
 	margin-right: 0px;
 	transform: scale(0.6);
-  }
-  
-  .btn-content:hover .icon-arrow {
+}
+
+.btn-content:hover .icon-arrow {
 	transition: 0.5s;
 	margin-right: 25px;
-  }
-  
-  .icon-arrow {
+}
+
+.icon-arrow {
 	width: 20px;
 	margin-left: 15px;
 	position: relative;
 	top: 6%;
-  }
-	
-  /* SVG */
-  #arrow-icon-one {
+}
+
+/* SVG */
+#arrow-icon-one {
 	transition: 0.4s;
 	transform: translateX(-60%);
-  }
-  
-  #arrow-icon-two {
+}
+
+#arrow-icon-two {
 	transition: 0.5s;
 	transform: translateX(-30%);
-  }
-  
-  .btn-content:hover #arrow-icon-three {
+}
+
+.btn-content:hover #arrow-icon-three {
 	animation: color_anim 1s infinite 0.2s;
-  }
-  
-  .btn-content:hover #arrow-icon-one {
+}
+
+.btn-content:hover #arrow-icon-one {
 	transform: translateX(0%);
 	animation: color_anim 1s infinite 0.6s;
-  }
-  
-  .btn-content:hover #arrow-icon-two {
+}
+
+.btn-content:hover #arrow-icon-two {
 	transform: translateX(0%);
 	animation: color_anim 1s infinite 0.4s;
-  }
-  
-  /* SVG animations */
-  @keyframes color_anim {
+}
+
+/* SVG animations */
+@keyframes color_anim {
 	0% {
-	  fill: white;
+		fill: white;
 	}
-  
+
 	50% {
-	  fill: var(--secondary);
+		fill: var(--secondary);
 	}
-  
+
 	100% {
-	  fill: white;
+		fill: white;
 	}
-  }
-  
-  /* Button animations */
-  @-webkit-keyframes btn-content {
+}
+
+/* Button animations */
+@-webkit-keyframes btn-content {
 	0% {
-	  outline: 0.2em solid var(--secondary);
-	  outline-offset: 0;
+		outline: 0.2em solid var(--secondary);
+		outline-offset: 0;
 	}
-  }
-  
-  @keyframes btn-content {
+}
+
+@keyframes btn-content {
 	0% {
-	  outline: 0.2em solid var(--secondary);
-	  outline-offset: 0;
+		outline: 0.2em solid var(--secondary);
+		outline-offset: 0;
 	}
-  }
+}
+
+[type="date"] {
+	background: #fff
+		url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+		95% no-repeat;
+}
+[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+	opacity: 0;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+input[type="date"] {
+	border: 1px solid #009793;
+	border-radius: 5px;
+	background-color: #fff;
+	padding: 5px 10px;
+	box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+	width: 150px;
+	height: 30px;
+}

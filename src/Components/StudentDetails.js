@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AbsentIcon from "../Icons/AbsentIcon";
 import PresentIcon from "../Icons/PresentIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
@@ -15,6 +15,19 @@ export const StudentDetails = () => {
 	const [error, setError] = useState();
 	const [text, settext] = useState("false");
 	const [absenties, setAbsenties] = useState([]);
+
+	let defaultDate = new Date();
+	const [date, setDate] = useState(defaultDate);
+	const days = { 0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday" }
+	
+	const datehandle = (e) => {
+		const date = new Date(e.target.value)
+		console.log(e.target.value)
+		console.log(date.getDay())
+		setDate(date)
+		console.log(date)
+		setSelectedData({...SelectedData,Day:days[date.getDay()]})
+	}
 
 	const activeHandler0 = (e) => {
 		const element1 = document.querySelectorAll(
@@ -124,8 +137,8 @@ export const StudentDetails = () => {
 		}
 	};
 	const clickHandler = async (e) => {
-		// console.log(e.target.name);
-		// console.log(roll);
+		console.log(SelectedData);
+		console.log(date);
 
 		await axios
 			.post("http://localhost:5001/Attendance", {
@@ -133,9 +146,13 @@ export const StudentDetails = () => {
 				operation: e.target.name,
 				roll,
 				SelectedData,
+				date:date.toLocaleDateString("en-GB")
 			})
 			.then((response) => {});
 	};
+	
+
+
 	return (
 		<div>
 			<div className="domain">
@@ -169,6 +186,14 @@ export const StudentDetails = () => {
 				</div>
 
 				<h3>Select Day</h3>
+				<label for="dateofbirth">Date Of Birth</label>
+				<input
+					type="date"
+					value={date.toLocaleDateString('en-CA')}
+					name="dateofbirth"
+					id="dateofbirth"
+					onChange={datehandle}
+				></input>
 				<div className="day-container">
 					<input
 						className="button"

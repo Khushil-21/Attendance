@@ -36,32 +36,34 @@ const SearchStudentsFromDatabase = async (query) => {
 };
 
 const MarkAttendanceToDB = async (absentData, SelectedData) => {
-	// console.log(absentData);
-	// console.log(SelectedData);
+	console.log("-----------data")
+	console.log(absentData);
+	console.log(SelectedData);
 	const { Lecture, Day, Batch } = SelectedData;
 	let subject = await TimeTableModel.findOne({ Batch: Batch });
 	subject = subject[Lecture][0][Day];
-	// console.log(subject);
-	// console.log(absentData);
-	for (let i of absentData) {
-		// console.log(i);
-		const c = await StudentModel.findOne({ RollNo: `${i}` });
-		// console.log(c[subject]);
-		if (c[subject] > 0) {
-			await StudentModel.updateOne(
-				{ RollNo: `${i}` },
-				{ $inc: { [subject]: -1 } }
-			);
-		}
-		// console.log("---------------------------------");
-	}
+	console.log(subject);
+	// for (let i of absentData) {
+	// 	// console.log(i);
+	// 	const c = await StudentModel.findOne({ RollNo: `${i}` });
+	// 	// console.log(c[subject]);
+	// 	if (c[subject] > 0) {
+	// 		await StudentModel.updateOne(
+	// 			{ RollNo: `${i}` },
+	// 			{ $inc: { [subject]: -1 } }
+	// 		);
+	// 	}
+	// 	// console.log("---------------------------------");
+	// }
 
-	var path = require("path");
-	path = path.join(__dirname, "/DataFiles/StudentsDetails.json");
-	const data = await StudentModel.find({}, { _id: 0, __v: 0 });
-	fs.writeFileSync(path, JSON.stringify(data));
+	// var path = require("path");
+	// path = path.join(__dirname, "/DataFiles/StudentsDetails.json");
+	// const data = await StudentModel.find({}, { _id: 0, __v: 0 });
+	// fs.writeFileSync(path, JSON.stringify(data));
 
-	WriteDailyFile(absentData, SelectedData);
+	// console.log("-----------data puru")
+
+	// WriteDailyFile(absentData, SelectedData);
 };
 
 const OneStudentFromDB = async (query) => {

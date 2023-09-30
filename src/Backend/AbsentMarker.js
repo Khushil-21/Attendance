@@ -3,7 +3,7 @@ const { MarkAttendanceToDB } = require("../Database/DatabaseConnection");
 path = path.join(__dirname, "./DataFiles/StudentsStatus.csv");
 
 const AbsentWriter = async(alldata) => {
-	let { absenties , operation, roll, SelectedData } = alldata;
+	let { absenties , operation, roll, SelectedData ,date} = alldata;
 	let temp = [];
 	if (operation === "present") {
 		for (let i of roll) {
@@ -23,6 +23,8 @@ const AbsentWriter = async(alldata) => {
 	// console.log(operation);
     // console.log("-------Rol")
 	// console.log(roll);
+    // console.log("-------date")
+	// console.log(date);
     // console.log("----------")
 
     await MarkAttendanceToDB(absenties,SelectedData)
