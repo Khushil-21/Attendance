@@ -6,7 +6,7 @@ import CalculatorIcon from "../Icons/CalculatorIcon";
 export const DailyAttendance = () => {
 	const [Daily, setData] = useState({
 		Day: "",
-		Date:"",
+		Date: "",
 		"Lecture-1": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
 		"Lecture-2": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
 		"Lecture-3": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
@@ -14,22 +14,32 @@ export const DailyAttendance = () => {
 	});
 	useEffect(() => {
 		window.scroll(0, 0);
-		axios.post("http://localhost:5001/Studentportal").then(async(response) => {
+		axios.post("http://localhost:5001/Studentportal").then(async (response) => {
 			await setData({ ...response.data.DailyAttendance });
+			console.log(response.data.DailyAttendance);
 		});
 	}, []);
 
 	return (
 		<>
 			<Preloader />
+
 			<div className="daily-container">
 				{
 					<h1 className="Day">
 						{Daily.Day.slice(0, -3).toUpperCase()}
 						<span className="letter-1">
 							{Daily.Day.slice(-3).toUpperCase()}
-						</span>{" "}
-						Absenties
+						</span>  Absenties
+					</h1>
+				}
+				{
+					<h1 className="Day">
+						{Daily.Date.slice(0, 2)}
+						<span className="letter-1">{Daily.Date.slice(2, 3)}</span>
+						{Daily.Date.slice(3, 5)}
+						<span className="letter-1">{Daily.Date.slice(5, 6)}</span>
+						{Daily.Date.slice(6, 12)}
 					</h1>
 				}
 				<br></br>

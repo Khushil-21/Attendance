@@ -18,16 +18,23 @@ export const StudentDetails = () => {
 
 	let defaultDate = new Date();
 	const [date, setDate] = useState(defaultDate);
-	const days = { 0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday" }
-	
+	const days = {
+		0: "Sunday",
+		1: "Monday",
+		2: "Tuesday",
+		3: "Wednesday",
+		4: "Thursday",
+		5: "Friday",
+		6: "Saturday",
+	};
+
 	const datehandle = (e) => {
-		const date = new Date(e.target.value)
-		console.log(e.target.value)
-		console.log(date.getDay())
+		const date = new Date(e.target.value);
 		setDate(date)
-		console.log(date)
-		setSelectedData({...SelectedData,Day:days[date.getDay()]})
-	}
+		setSelectedData({ ...SelectedData, Day: days[date.getDay()], date: date.toLocaleDateString("en-GB") });
+		console.log(SelectedData);
+		
+	};
 
 	const activeHandler0 = (e) => {
 		const element1 = document.querySelectorAll(
@@ -49,6 +56,7 @@ export const StudentDetails = () => {
 		}
 		element1[0].classList.toggle("day-selected");
 	};
+
 	const activeHandler1 = (e) => {
 		const element1 = document.querySelectorAll(
 			`input[value=${e.target.value}]`
@@ -65,6 +73,7 @@ export const StudentDetails = () => {
 		}
 		element1[0].classList.toggle("lecture-selected");
 	};
+
 	const activeHandler2 = async (e) => {
 		let er = false;
 		const element1 = document.querySelectorAll(
@@ -74,10 +83,7 @@ export const StudentDetails = () => {
 			setError("Please Select Lecture First");
 			return;
 		}
-		if (SelectedData.Day === undefined) {
-			setError("Please Select Day First");
-			return;
-		}
+
 		if (SelectedData.Batch !== e.target.value) {
 			setStudentDetails([]);
 			settext("false");
@@ -139,19 +145,15 @@ export const StudentDetails = () => {
 	const clickHandler = async (e) => {
 		console.log(SelectedData);
 		console.log(date);
-
 		await axios
 			.post("http://localhost:5001/Attendance", {
 				absenties,
 				operation: e.target.name,
 				roll,
 				SelectedData,
-				date:date.toLocaleDateString("en-GB")
 			})
 			.then((response) => {});
 	};
-	
-
 
 	return (
 		<div>
@@ -185,16 +187,16 @@ export const StudentDetails = () => {
 					></input>
 				</div>
 
-				<h3>Select Day</h3>
-				<label for="dateofbirth">Date Of Birth</label>
+				<h3>Select Date</h3>
+				
 				<input
 					type="date"
-					value={date.toLocaleDateString('en-CA')}
+					value={date.toLocaleDateString("en-CA")}
 					name="dateofbirth"
 					id="dateofbirth"
 					onChange={datehandle}
 				></input>
-				<div className="day-container">
+				{/* <div className="day-container">
 					<input
 						className="button"
 						type="button"
@@ -231,7 +233,7 @@ export const StudentDetails = () => {
 						value="Saturday"
 						onClick={activeHandler0}
 					></input>
-				</div>
+				</div> */}
 
 				<h3>Select Batch</h3>
 				<div className="btn-container">

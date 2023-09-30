@@ -47,12 +47,12 @@ app.post("/SearchStudents", async(req, res) => {
 
 app.post("/Attendance", async (req, res) => {
 	// console.log(req.body)
-	AbsentWriter(req.body);
+	await AbsentWriter(req.body);
 });
 app.post("/Studentportal", async (req, res) => {
-	// console.log(req.body)
+	console.log(req.body)
 	const DailyAttendance = await ReadDailyFile()
-	// console.log(DailyAttendance)
+	console.log(DailyAttendance)
 	res.json({DailyAttendance})
 });
 app.post("/GetOneStudent", async (req, res) => {
