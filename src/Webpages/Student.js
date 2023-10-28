@@ -22,6 +22,7 @@ export const Student = () => {
 		// console.log(query)
 		if (query === undefined || query==="202100217121")  {
 			seter();
+			setOneStudet();
 			seterror("Enter EnrollMent Number First");
 
 			return;

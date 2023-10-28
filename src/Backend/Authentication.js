@@ -48,6 +48,7 @@ app.post("/SearchStudents", async(req, res) => {
 app.post("/Attendance", async (req, res) => {
 	// console.log(req.body)
 	await AbsentWriter(req.body);
+	res.status(201).send()
 });
 app.post("/Studentportal", async (req, res) => {
 	console.log(req.body)

@@ -18,6 +18,7 @@ export const StudentDetails = () => {
 
 	let defaultDate = new Date();
 	const [date, setDate] = useState(defaultDate);
+	const [Sunday, setsunday] = useState();
 	const days = {
 		0: "Sunday",
 		1: "Monday",
@@ -30,10 +31,13 @@ export const StudentDetails = () => {
 
 	const datehandle = (e) => {
 		const date = new Date(e.target.value);
-		setDate(date)
-		setSelectedData({ ...SelectedData, Day: days[date.getDay()], date: date.toLocaleDateString("en-GB") });
+		setDate(date);
+		setSelectedData({
+			...SelectedData,
+			Day: days[date.getDay()],
+			date: date.toLocaleDateString("en-GB"),
+		});
 		console.log(SelectedData);
-		
 	};
 
 	const activeHandler0 = (e) => {
@@ -145,14 +149,20 @@ export const StudentDetails = () => {
 	const clickHandler = async (e) => {
 		console.log(SelectedData);
 		console.log(date);
-		await axios
-			.post("http://localhost:5001/Attendance", {
-				absenties,
-				operation: e.target.name,
-				roll,
-				SelectedData,
-			})
-			.then((response) => {});
+		if (SelectedData.Day !== "Sunday") {
+			setsunday()
+			await axios
+				.post("http://localhost:5001/Attendance", {
+					absenties,
+					operation: e.target.name,
+					roll,
+					SelectedData,
+				})
+				.then((response) => {}).catch((er)=>{console.log(er)});
+		} else {
+			setsunday("Sunday Can't Be Selected")
+			console.log(Sunday)
+		}
 	};
 
 	return (
@@ -188,7 +198,7 @@ export const StudentDetails = () => {
 				</div>
 
 				<h3>Select Date</h3>
-				
+
 				<input
 					type="date"
 					value={date.toLocaleDateString("en-CA")}
@@ -196,6 +206,8 @@ export const StudentDetails = () => {
 					id="dateofbirth"
 					onChange={datehandle}
 				></input>
+				<br></br>
+				<h5 className="er">{Sunday}</h5>
 				{/* <div className="day-container">
 					<input
 						className="button"
