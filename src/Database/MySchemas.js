@@ -1,12 +1,24 @@
 const mg = require("mongoose");
+require('dotenv').config();
 
-mg.connect("mongodb://127.0.0.1:27017/Attendance-Calculator")
-	.then(() => {
-		console.log("Connected Successfully");
-	})
-	.catch(() => {
-		console.log("error");
-	});
+const MONGODB_URI = process.env.MONGODB_URI;
+
+try {
+	if (!MONGODB_URI) {
+		throw new Error(
+			"Please define the MONGODB_URI environment variable inside .env"
+		);
+	}
+	mg.connect(MONGODB_URI)
+		.then(() => {
+			console.log("Connected to MongoDB Successfully!");
+		})
+		.catch((error) => {
+			console.error("Error connecting to MongoDB:", error);
+		});
+} catch (error) {
+	console.error("Error connecting to MongoDB:", error);
+}
 
 const StudentSchema = mg.Schema({
 	RollNo: String,
@@ -49,3 +61,11 @@ const TimeTableSchema = mg.Schema({
 const TimeTableModel = new mg.model("Time-Table", TimeTableSchema);
 
 module.exports = { StudentModel, RoleModel, TimeTableModel };
+
+// mg.connect("mongodb://127.0.0.1:27017/Attendance-Calculator")
+// 	.then(() => {
+// 		console.log("Connected Successfully");
+// 	})
+// 	.catch(() => {
+// 		console.log("error");
+// 	});
