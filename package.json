@@ -18,8 +18,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"build:backend": "cd src/backend && npm install && npm run build",
-		"build:database": "cd src/database && npm install && npm run build"
+		"build:backend": "cd src/backend && npm install ",
+		"build:database": "cd src/database && npm install "
 	},
 	"eslintConfig": {
 		"extends": [
