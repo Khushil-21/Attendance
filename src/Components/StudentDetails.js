@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AbsentIcon from "../Icons/AbsentIcon";
 import PresentIcon from "../Icons/PresentIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
-import file from "../Database/DataFiles/StudentsStatus.csv";
+import file from "../Backend/Database/DataFiles/StudentsStatus.csv";
 import { DailyIcon } from "../Icons/DailyIcon";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { Link } from "react-router-dom";
