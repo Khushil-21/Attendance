@@ -8,7 +8,7 @@ const ReadDailyFile = require("./DailyAbsentFileReader");
 
 app.use(express.json());
 app.use(cors());
-const port = 5001
+const port = process.env.PORT || 5001;
 
 app.post("/RoleAuthentication", async(req, res) => {
 	// console.log(req.body.username);
