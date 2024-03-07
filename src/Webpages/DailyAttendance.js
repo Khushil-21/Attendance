@@ -15,7 +15,7 @@ export const DailyAttendance = () => {
 	useEffect(() => {
 		window.scroll(0, 0);
 		axios.post("http://localhost:5001/Studentportal").then(async (response) => {
-			await setData({ ...response.data.DailyAttendance });
+			await setData({ ...Daily,...response.data.DailyAttendance });
 			console.log(response.data.DailyAttendance);
 		});
 	}, []);
@@ -30,7 +30,7 @@ export const DailyAttendance = () => {
 						{Daily.Day.slice(0, -3).toUpperCase()}
 						<span className="letter-1">
 							{Daily.Day.slice(-3).toUpperCase()}
-						</span>  Absenties
+						</span>  Absentees
 					</h1>
 				}
 				{
