@@ -4,9 +4,7 @@
 		{
 			"src": "src/Backend/Authentication.js",
 			"use": "@vercel/node"
-		},
-		{ "src": "src/Backend/**/*", "use": "@vercel/node" },
-		{ "src": "src/Database/**/*", "use": "@vercel/node" }
+		}
 	],
 	"routes": [
 		{
