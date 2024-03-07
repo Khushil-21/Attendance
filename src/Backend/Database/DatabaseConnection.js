@@ -1,4 +1,4 @@
-const WriteDailyFile = require("../Backend/DailyAbsentFileWriter");
+const WriteDailyFile = require("../DailyAbsentFileWriter");
 const { RoleModel, StudentModel, TimeTableModel } = require("./MySchemas");
 const fs = require("fs");
 

@@ -1,6 +1,5 @@
 {
 	"version": 2,
-    "buildCommand": "npm run build && npm run build:backend && npm run build:database",
 	"builds": [
 		{
 			"src": "src/Backend/Authentication.js",

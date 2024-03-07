@@ -1,5 +1,5 @@
 var path = require("path");
-const { MarkAttendanceToDB } = require("../Database/DatabaseConnection");
+const { MarkAttendanceToDB } = require("./Database/DatabaseConnection");
 path = path.join(__dirname, "./DataFiles/StudentsStatus.csv");
 
 const AbsentWriter = async(alldata) => {

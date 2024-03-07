@@ -3,13 +3,16 @@ const app = express();
 const cors = require("cors");
 // const GetStudentList = require("./StudentList");
 const AbsentWriter = require("./AbsentMarker");
-const { RoleAuthentication, GetStudentsFromDatabase, SearchStudentsFromDatabase, OneStudentFromDB } = require("../Database/DatabaseConnection");
+const { RoleAuthentication, GetStudentsFromDatabase, SearchStudentsFromDatabase, OneStudentFromDB } = require("./Database/DatabaseConnection");
 const ReadDailyFile = require("./DailyAbsentFileReader");
 
 app.use(express.json());
 app.use(cors());
 const port = 5001
 
+app.get('/', (req, res) => {
+	res.send('Hello from your Vercel server!');
+  });
 
 app.post("/RoleAuthentication", async(req, res) => {
 	// console.log(req.body.username);
