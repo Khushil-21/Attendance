@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "Authentication.js", 
+        "use": "@vercel/node" 
+      }
+    ],
+    "routes": [
+      { "src": "\\src\\Backend\\Authentication.js", "dest": "Authentication.js" }
+    ]
+  }
+  
