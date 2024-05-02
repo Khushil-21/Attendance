@@ -1,13 +1,1 @@
-{
-	"Day": "Monday",
-	"Date": "18/03/2024",
-	"Lecture-1": {
-		"Batch-1": [],
-		"Batch-2": ["11", "12"],
-		"Batch-3": [],
-		"Batch-4": []
-	},
-	"Lecture-2": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
-	"Lecture-3": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] },
-	"Lecture-4": { "Batch-1": [], "Batch-2": [], "Batch-3": [], "Batch-4": [] }
-}
+{"Day":"Wednesday","Date":"01/05/2024","Lecture-1":{"Batch-1":["1","2"],"Batch-2":[],"Batch-3":[],"Batch-4":[]},"Lecture-2":{"Batch-1":[],"Batch-2":[],"Batch-3":[],"Batch-4":[]},"Lecture-3":{"Batch-1":[],"Batch-2":[],"Batch-3":[],"Batch-4":[]},"Lecture-4":{"Batch-1":[],"Batch-2":[],"Batch-3":[],"Batch-4":[]}}

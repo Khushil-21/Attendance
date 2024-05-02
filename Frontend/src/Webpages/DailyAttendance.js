@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
 import CalculatorIcon from "../Icons/CalculatorIcon";
+import getBaseUrl from "../utils/baseURL";
 
 export const DailyAttendance = () => {
 	const [Daily, setData] = useState({
@@ -14,8 +15,8 @@ export const DailyAttendance = () => {
 	});
 	useEffect(() => {
 		window.scroll(0, 0);
-		axios.post("http://localhost:5001/Studentportal").then(async (response) => {
-			await setData({ ...Daily,...response.data.DailyAttendance });
+		axios.post(getBaseUrl("Studentportal")).then(async (response) => {
+			await setData({ ...Daily, ...response.data.DailyAttendance });
 			console.log(response.data.DailyAttendance);
 		});
 	}, []);
@@ -30,7 +31,8 @@ export const DailyAttendance = () => {
 						{Daily.Day.slice(0, -3).toUpperCase()}
 						<span className="letter-1">
 							{Daily.Day.slice(-3).toUpperCase()}
-						</span>  Absentees
+						</span>{" "}
+						Absentees
 					</h1>
 				}
 				{

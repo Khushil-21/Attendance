@@ -6,6 +6,7 @@ import { Navbar } from "../Components/Navbar";
 import TeacherIcon from "../Icons/TeacherIcon";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
+import getBaseUrl from "../utils/baseURL";
 export const Teacher = () => {
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
@@ -17,7 +18,11 @@ export const Teacher = () => {
 		e.preventDefault();
 		const { username, password } = Data;
 		await axios
-			.post("http://localhost:5001/RoleAuthentication", { username, password, role: "TEACHER" })
+			.post(getBaseUrl("RoleAuthentication"), {
+				username,
+				password,
+				role: "TEACHER",
+			})
 			.then((response) => {
 				// console.log(response)
 				if (response.data.AuthenticationStatus === "Successful") {
@@ -28,8 +33,8 @@ export const Teacher = () => {
 			});
 	};
 	return (
-		<div>	
-			<Preloader/>
+		<div>
+			<Preloader />
 			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-2">

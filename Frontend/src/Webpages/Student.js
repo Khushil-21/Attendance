@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { DailyIcon } from "../Icons/DailyIcon";
 import axios from "axios";
+import getBaseUrl from "../utils/baseURL";
 
 export const Student = () => {
 	const FSD_Total = 100;
@@ -20,28 +21,26 @@ export const Student = () => {
 	const clickhandle = (e) => {
 		e.preventDefault();
 		// console.log(query)
-		if (query === undefined || query==="202100217121")  {
+		if (query === undefined || query === "202100217121") {
 			seter();
 			setOneStudet();
 			seterror("Enter EnrollMent Number First");
 
 			return;
 		}
-		
+
 		if (/^\d{16}$/.test(query)) {
 			seterror();
 			seter();
-			axios
-				.post("http://localhost:5001/GetOneStudent", { query })
-				.then((response) => {
-					if (response.data.OneStudent) {
-						// console.log(response.data.OneStudent);
-						setOneStudet(response.data.OneStudent);
-					} else {
-						setOneStudet();
-						seterror("Data Not Found");
-					}
-				});
+			axios.post(getBaseUrl("GetOneStudent"), { query }).then((response) => {
+				if (response.data.OneStudent) {
+					// console.log(response.data.OneStudent);
+					setOneStudet(response.data.OneStudent);
+				} else {
+					setOneStudet();
+					seterror("Data Not Found");
+				}
+			});
 		} else {
 			setOneStudet();
 			seterror();
@@ -76,8 +75,8 @@ export const Student = () => {
 								<input
 									id="s"
 									onChange={(e) => {
-										setQuery("202100217121"+e.target.value);
-										console.log(query)
+										setQuery("202100217121" + e.target.value);
+										console.log(query);
 									}}
 									type="text"
 									maxLength="4"

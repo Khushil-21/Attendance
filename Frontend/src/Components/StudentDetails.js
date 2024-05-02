@@ -7,6 +7,7 @@ import { DailyIcon } from "../Icons/DailyIcon";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import getBaseUrl from "../utils/baseURL";
 
 export const StudentDetails = () => {
 	const [SelectedData, setSelectedData] = useState({});
@@ -105,31 +106,29 @@ export const StudentDetails = () => {
 		element1[0].classList.toggle("batch-selected");
 		const batch = e.target.value;
 
-		await axios
-			.post("http://localhost:5001/GetStudents", { batch })
-			.then((response) => {
-				if (
-					response.data.students.length !== undefined &&
-					response.data.students.length !== 0
-				) {
-					setRoll(
-						response.data.students.map((value) => {
-							return value.RollNo;
-						})
-					);
-					setStudentDetails(response.data.students);
-					settext("true");
+		await axios.post(getBaseUrl("GetStudents"), { batch }).then((response) => {
+			if (
+				response.data.students.length !== undefined &&
+				response.data.students.length !== 0
+			) {
+				setRoll(
+					response.data.students.map((value) => {
+						return value.RollNo;
+					})
+				);
+				setStudentDetails(response.data.students);
+				settext("true");
+				document
+					.getElementsByClassName("student-list")[0]
+					.classList.remove("hide");
+			} else {
+				if (er === true) {
 					document
 						.getElementsByClassName("student-list")[0]
-						.classList.remove("hide");
-				} else {
-					if (er === true) {
-						document
-							.getElementsByClassName("student-list")[0]
-							.classList.add("hide");
-					}
+						.classList.add("hide");
 				}
-			});
+			}
+		});
 	};
 	const checkHandler = (e) => {
 		// console.log(e.target.value);
@@ -152,7 +151,7 @@ export const StudentDetails = () => {
 		if (SelectedData.Day !== "Sunday") {
 			setsunday();
 			await axios
-				.post("http://localhost:5001/Attendance", {
+				.post(getBaseUrl("Attendance"), {
 					absenties,
 					operation: e.target.name,
 					roll,

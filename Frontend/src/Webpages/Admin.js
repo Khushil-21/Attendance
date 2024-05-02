@@ -6,9 +6,9 @@ import { Footer } from "../Components/Footer";
 import AdminIcon from "../Icons/AdminIcon";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
+import getBaseUrl from "../utils/baseURL";
 
 export const Admin = () => {
-
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
@@ -21,7 +21,11 @@ export const Admin = () => {
 		e.preventDefault();
 		const { username, password } = Data;
 		axios
-			.post("http://localhost:5001/RoleAuthentication", { username, password, role: "ADMIN" })
+			.post(getBaseUrl("RoleAuthentication"), {
+				username,
+				password,
+				role: "ADMIN",
+			})
 			.then((response) => {
 				if (response.data.AuthenticationStatus === "Successful") {
 					navigate("/AdminDashboard");
@@ -32,12 +36,12 @@ export const Admin = () => {
 	};
 	return (
 		<div>
-			<Preloader/>
+			<Preloader />
 			{/* <Navbar /> */}
 			<Background />
 			<div className="container-fluid section-2">
 				<div className="form-container">
-					<AdminIcon width="110px" height="110px"/>
+					<AdminIcon width="110px" height="110px" />
 					<h1 className="form-heading">
 						<span className="letter-1">A</span>dmin
 						<span className="letter-1">L</span>og-

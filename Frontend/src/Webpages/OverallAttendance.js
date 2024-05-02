@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { Preloader } from "../Components/Preloader";
-import { Navbar } from "../Components/Navbar";
-import { Footer } from "../Components/Footer";
 import axios from "axios";
 import { BugIcon } from "../Icons/BugIcon";
+import getBaseUrl from "../utils/baseURL";
 
 export const OverallAttendance = () => {
 	const [displaystudents, SetDisplayStudents] = useState([]);
@@ -17,14 +16,12 @@ export const OverallAttendance = () => {
 		var ignore = false;
 
 		window.scroll(0, 0);
-		axios
-			.post("http://localhost:5001/GetStudents", { batch: "All" })
-			.then((response) => {
-				// console.log(response.data.students)
-				if (!ignore) {
-					SetDisplayStudents(response.data.students);
-				}
-			});
+		axios.post(getBaseUrl("GetStudents"), { batch: "All" }).then((response) => {
+			// console.log(response.data.students)
+			if (!ignore) {
+				SetDisplayStudents(response.data.students);
+			}
+		});
 		return () => {
 			ignore = true;
 		};
@@ -32,7 +29,7 @@ export const OverallAttendance = () => {
 
 	const seacrhHandler = async (e) => {
 		await axios
-			.post("http://localhost:5001/SearchStudents", {
+			.post(getBaseUrl("SearchStudents"), {
 				searchQuery: e.target.value.trimEnd(),
 			})
 			.then((response) => {
