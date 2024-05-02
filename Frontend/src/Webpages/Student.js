@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { DailyIcon } from "../Icons/DailyIcon";
 import axios from "axios";
-import getBaseUrl from "../../../utils/baseURL";
+import getBaseUrl from "../utils/baseURL";
 
 export const Student = () => {
 	const FSD_Total = 100;

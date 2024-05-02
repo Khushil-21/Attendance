@@ -7,7 +7,7 @@ import { DailyIcon } from "../Icons/DailyIcon";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import getBaseUrl from "../../../utils/baseURL";
+import getBaseUrl from "../utils/baseURL";
 
 export const StudentDetails = () => {
 	const [SelectedData, setSelectedData] = useState({});

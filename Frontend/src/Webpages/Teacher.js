@@ -6,7 +6,7 @@ import { Navbar } from "../Components/Navbar";
 import TeacherIcon from "../Icons/TeacherIcon";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
-import getBaseUrl from "../../utils/baseURL";
+import getBaseUrl from "../utils/baseURL";
 export const Teacher = () => {
 	const [Data, setData] = useState({});
 	const [error, setError] = useState("");
