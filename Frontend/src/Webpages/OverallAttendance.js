@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
 import { BugIcon } from "../Icons/BugIcon";
-import getBaseUrl from "../utils/baseURL";
+import getBaseUrl from "../../utils/baseURL";
 
 export const OverallAttendance = () => {
 	const [displaystudents, SetDisplayStudents] = useState([]);

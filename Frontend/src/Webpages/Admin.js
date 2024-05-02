@@ -6,7 +6,7 @@ import { Footer } from "../Components/Footer";
 import AdminIcon from "../Icons/AdminIcon";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
-import getBaseUrl from "../utils/baseURL";
+import getBaseUrl from "../../utils/baseURL";
 
 export const Admin = () => {
 	const [Data, setData] = useState({});

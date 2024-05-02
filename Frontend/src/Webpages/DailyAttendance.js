@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Preloader } from "../Components/Preloader";
 import axios from "axios";
 import CalculatorIcon from "../Icons/CalculatorIcon";
-import getBaseUrl from "../utils/baseURL";
+import getBaseUrl from "../../utils/baseURL";
 
 export const DailyAttendance = () => {
 	const [Daily, setData] = useState({
