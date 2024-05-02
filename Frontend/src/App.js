@@ -10,29 +10,31 @@ import { OverallAttendance } from "./Webpages/OverallAttendance";
 import { Navbar } from "./Components/Navbar";
 import { Footer } from "./Components/Footer";
 import { DailyAttendance } from "./Webpages/DailyAttendance";
-import { useState } from "react";
 
 function App() {
+	console.log(process.env);
 
 	return (
 		<div className="App">
 			<Router>
-				<Navbar/>
+				<Navbar />
 				<Routes>
-					<Route path="" element={<Home />}>
-					</Route>
+					<Route path="" element={<Home />}></Route>
 					<Route path="Admin" element={<Admin />}></Route>
-					<Route path="AdminDashboard" element={ <AdminDashboard />}></Route>
+					<Route path="AdminDashboard" element={<AdminDashboard />}></Route>
 
 					<Route path="Teacher" element={<Teacher />}></Route>
 					<Route path="TeacherDashboard" element={<TeacherDashboard />}></Route>
 
 					<Route path="Student" element={<Student />}></Route>
 
-					<Route path="Overall-Attendance" element={<OverallAttendance />}></Route>
+					<Route
+						path="Overall-Attendance"
+						element={<OverallAttendance />}
+					></Route>
 					<Route path="Daily-Attendance" element={<DailyAttendance />}></Route>
 				</Routes>
-				<Footer/>
+				<Footer />
 			</Router>
 		</div>
 	);
