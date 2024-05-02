@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AbsentIcon from "../Icons/AbsentIcon";
 import PresentIcon from "../Icons/PresentIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
-import file from "../Backend/Database/DataFiles/StudentsStatus.csv";
+// import file from "@/Backend/Database/DataFiles/StudentsStatus.csv";
 import { DailyIcon } from "../Icons/DailyIcon";
 import { EyeIcon } from "../Icons/EyeIcon";
 import { Link } from "react-router-dom";
@@ -150,7 +150,7 @@ export const StudentDetails = () => {
 		console.log(SelectedData);
 		console.log(date);
 		if (SelectedData.Day !== "Sunday") {
-			setsunday()
+			setsunday();
 			await axios
 				.post("http://localhost:5001/Attendance", {
 					absenties,
@@ -158,10 +158,13 @@ export const StudentDetails = () => {
 					roll,
 					SelectedData,
 				})
-				.then((response) => {}).catch((er)=>{console.log(er)});
+				.then((response) => {})
+				.catch((er) => {
+					console.log(er);
+				});
 		} else {
-			setsunday("Sunday Can't Be Selected")
-			console.log(Sunday)
+			setsunday("Sunday Can't Be Selected");
+			console.log(Sunday);
 		}
 	};
 
@@ -348,7 +351,8 @@ export const StudentDetails = () => {
 							<PresentIcon />
 						</button>
 						<a
-							href={file}
+							// href={file}
+							href="/"
 							download={SelectedData.Batch}
 							target="_blank"
 							rel="noreferrer"
